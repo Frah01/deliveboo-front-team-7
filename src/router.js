@@ -6,6 +6,7 @@ import HomePage from './pages/HomePage.vue';
 import ChiSiamo from './pages/ChiSiamo.vue';
 import Contatti from './pages/Contatti.vue';
 import Collab from './pages/Collab.vue';
+import ThankYou from './pages/ThankYou.vue';
 
 const router = createRouter({
     history: createWebHistory(),
@@ -29,6 +30,11 @@ const router = createRouter({
             path: '/lavora-con-noi',
             name: 'collab',
             component: Collab,
+        },
+        {
+            path: '/thank-you',
+            name: 'thank-you',
+            component: ThankYou,
         },
     ]
 });
