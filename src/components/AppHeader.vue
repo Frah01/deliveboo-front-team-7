@@ -19,38 +19,72 @@
                 ]
             }
         }
-    }
+    };
 </script>
 <template lang="">
-    <header class="z-index-nav w-100 shadow-box">
-        <nav class="navbar navbar-expand-md background-nav">
-            <div class="container-fluid ">
-                <div class="navbar-brand">
-                        <router-link :to="{ name: 'homepage'}" class="nav-link text-white">
-                                <img src="#" class="logo">
-                            </router-link>
-                </div>
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <ul class="navbar-nav ms-auto">
-                        <li class="nav-item" v-for="(item,index) in menuItems" :key="index">
-                            <router-link :to="{ name: item.routeName}" class="nav-link text-white">
-                                {{ item.label }}
-                            </router-link>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </nav>
-    </header>
+    <header class="navbar navbar-dark sticky-top flex-md-nowrap p-2 shadow deliveboo-navbar">
+        <div class="navbar-brand col-md-3 col-lg-2 my-2 container-logo" >
+            <router-link :to="{ name: 'homepage'}" >
+                <img src="https://smallprintpizza.com.au/wp-content/uploads/deliveroo-logo.png" alt="logo deliveboo">
+            </router-link>
+        </div>
+        <div class="col-md-3 col-lg-4 my-2">
+            <ul class="d-flex list-unstyled justify-content-center align-content-center my-0">
+                <li class="nav-item px-5 " v-for="(item,index) in menuItems" :key="index">
+                    <router-link :to="{ name: item.routeName}" class="login-button">
+                        {{ item.label }}
+                    </router-link>
+                </li>
+            </ul>
+        </div>
+        <div class="col-md-3 col-lg-2 my-2 contenitore-link">
+            <a class="login-button" href="http://localhost:8000/login">Login</a>
+            <a class="login-button" href="http://localhost:8000/register">Registrati</a>
+            <a href="">
+                <img src="https://cdn-icons-png.flaticon.com/128/4160/4160115.png" alt="" width="50px" height="50px">
+            </a>
+        </div>
+        </header>
+       
+
 </template>
 <style lang="scss">
-    .background-nav {
-        background-color: rgb(46, 146, 46);
+    .deliveboo-navbar {
+    background-color: #00CDBE;
+    height: 10vh;
+
+    .container-logo {
+        width: 250px;
+
+        img {
+            width: 100%;
+            overflow-y: hidden;
+            color: white;
+            padding-left: 20px;
+        }
+
     }
 
 
-        .shadow-box{
-            box-shadow: 1px 1px 5px solid black;
+    .login-button{
+        font-weight: 600;
+        font-size: 17px;
+        text-decoration: none;
+        color: white;
+        margin-right: 20px;
+        transition: color 0.5s;
+    
+        &:hover,
+        &:active {
+                color: #440063 !important;
         }
+    }
+
+    .dark-mode{
+        background-color: black;
+        color: white;
+    }
+
+ }
 
 </style>
