@@ -33,9 +33,6 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav ms-auto">
                         <li class="nav-item" v-for="(item,index) in menuItems" :key="index">
-                            <!-- <a href="item.routeName" class="nav-link text-white">
-                                {{ item.label }}
-                            </a> -->
                             <router-link :to="{ name: item.routeName}" class="nav-link text-white">
                                 {{ item.label }}
                             </router-link>
