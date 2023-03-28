@@ -5,8 +5,16 @@
             return {
                 menuItems: [
                     {
-                        label: 'Homepage',
-                        routeName: 'homepage',
+                        label: 'Chi Siamo',
+                        routeName: 'chi-siamo',
+                    },
+                    {
+                        label: 'Contatti',
+                        routeName: 'contatti',
+                    },
+                    {
+                        label: 'Lavora con noi',
+                        routeName: 'collab',
                     },
                 ]
             }
@@ -41,12 +49,9 @@
         background-color: rgb(46, 146, 46);
     }
 
-    .z-index-nav{
-        position: fixed;
-        z-index: 1;
 
         .shadow-box{
             box-shadow: 1px 1px 5px solid black;
         }
-    }
+
 </style>
