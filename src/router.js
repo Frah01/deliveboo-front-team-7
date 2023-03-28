@@ -2,6 +2,7 @@
 //IMPORTO createRouter e createWebHistory
 import { createRouter, createWebHistory } from 'vue-router';
 
+import HomePage from './pages/HomePage.vue';
 import ChiSiamo from './pages/ChiSiamo.vue';
 import Contatti from './pages/Contatti.vue';
 import Collab from './pages/Collab.vue';
@@ -11,6 +12,11 @@ const router = createRouter({
     routes: [
         {
             path: '/',
+            name: 'homepage',
+            component: HomePage,
+        },
+        {
+            path: '/chi-siamo',
             name: 'chi-siamo',
             component: ChiSiamo,
         },

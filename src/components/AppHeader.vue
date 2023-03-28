@@ -26,7 +26,9 @@
         <nav class="navbar navbar-expand-md background-nav">
             <div class="container-fluid ">
                 <div class="navbar-brand">
-                    <img src="#" class="logo">
+                        <router-link :to="{ name: 'homepage'}" class="nav-link text-white">
+                                <img src="#" class="logo">
+                            </router-link>
                 </div>
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav ms-auto">
