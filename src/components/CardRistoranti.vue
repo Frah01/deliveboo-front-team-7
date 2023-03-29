@@ -10,7 +10,6 @@ export default {
             store
         }
     }
-
 }
 </script>
 
@@ -27,8 +26,8 @@ export default {
                     <h5 class="card-title"><strong>{{ restaurant.nome}}</strong></h5>
                     <div class="d-flex">
                         <em><strong>categoria:</strong></em>
-                        <span class="badge" v-if="restaurant.categories" v-for="(category, item) in restaurant.categories" :key="item">
-                            {{category.nome}}
+                        <span class="badge" v-if="restaurant.categories != ''" v-for="(category, item) in restaurant.categories" :key="item">
+                            <span>{{category.nome}}</span>
                         </span>
                         <span v-else>Nessuna categoria selezionata</span>
                     </div>

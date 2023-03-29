@@ -32,9 +32,11 @@ export default {
                     <div class="card-body">
                         <ul class="list-unstyled">
                             <li v-for="dish in dishes">
-                                <p class="fw-semibold">Nome: <span>{{ dish.nome }}</span></p>
-                                <p class="fw-semibold">Prezzo: <span>{{ dish.prezzo }} &euro;</span></p>
-                                <p class="fw-semibold">Quantità: <span>{{ dish.quantita }}</span></p>
+                                <div v-if="dish.quantita != 0">
+                                    <p class="fw-semibold">Nome: <span>{{ dish.nome }}</span></p>
+                                    <p class="fw-semibold">Prezzo: <span>{{ dish.prezzo }} &euro;</span></p>
+                                    <p class="fw-semibold">Quantità: <span>{{ dish.quantita }}</span></p>
+                                </div>
                             </li>
                             <li>
                                 <p class="fw-semibold">Prezzo Totale: <span>{{ prezzoTotale() }} &euro;</span></p>
