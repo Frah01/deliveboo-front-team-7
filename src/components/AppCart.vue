@@ -24,15 +24,30 @@ export default {
 }
 </script>
 <template lang="">
-    <div>
-        <ul>
-            <li v-for="dish in this.store.cart">
-                {{ dish.nome }}
-                {{ dish.prezzo }}
-                {{ dish.quantita }}
-            </li>
-            <p>Totale: {{ totalPrice }} &euro;</p>
-        </ul>
+    <div class="container" >
+        <div class="row" >
+            <h2 class="mt-5 text-center">CARRELLO</h2>
+            <div class="col-12 mt-5 d-flex justify-content-center">
+                <div class="card shadow" style="width: 18rem;">
+                    <div class="card-body">
+                        <ul class="list-unstyled">
+                        <li v-for="dish in this.store.cart">
+                            <p class="fw-semibold">Nome: <span>{{ dish.nome }}</span></p>
+                            <p class="fw-semibold">Prezzo: <span>{{ dish.prezzo }} &euro;</span></p>
+                            <p class="fw-semibold">Quantità: <span>{{ dish.quantita }}</span></p>
+                        </li>
+                        <li>
+                            <p class="fw-semibold">Prezzo Totale: <span>{{ this.totalPrice }} &euro;</span></p>
+                        </li>
+                    </ul>
+                    <div class="">
+                        <button type="submit" class="btn btn-sm indietro text-white fw-semibold me-2">Paga</button>
+                        <button type="submit" class="btn btn-sm btn-danger fw-semibold ">Annulla</button>
+                    </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 </template>
 <style lang="">
