@@ -12,14 +12,9 @@ export default {
 </script>
 <template lang="">
 
-<AppJumbo></AppJumbo>
-     <div class="container">
-            <div class="row" >
-                <div class="col-12 mt-5">
-                    <RicercaCat></RicercaCat>
-                </div>
-            </div>
-        </div>
+    <AppJumbo></AppJumbo>
+    <RicercaCat></RicercaCat>
+                
 </template>
 <style lang="">
     
