@@ -2,27 +2,27 @@
 import { store } from '../store';
 export default {
     name: "AppCart",
-    data(){
-        return{
-            store,
-            totalPrice: 0,
+    props: {
+        dishes: Object
+    },
+    data() {
+        return {
+            store
         };
     },
     methods: {
-        addPrice(){
-            let total = 0;
-            for(let i = 0; i < this.store.cart.length; i++){
-                const itemTotal = parseFloat(this.store.cart[i].prezzo)* this.store.cart[i].quantita;
-                total += itemTotal
+        prezzoTotale() {
+            let total_price = 0;
+            let all_dishes = this.dishes;
+            for (let dish in all_dishes) {
+                total_price += all_dishes[dish].prezzo * all_dishes[dish].quantita;
             }
-            this.totalPrice = total.toFixed(2)
+            return total_price;
         }
-    },
-    mounted(){
-        this.addPrice(this.store.cart)
     }
 }
 </script>
+
 <template lang="">
     <div class="container" >
         <div class="row" >
@@ -31,15 +31,15 @@ export default {
                 <div class="card shadow" style="width: 18rem;">
                     <div class="card-body">
                         <ul class="list-unstyled">
-                        <li v-for="dish in this.store.cart">
-                            <p class="fw-semibold">Nome: <span>{{ dish.nome }}</span></p>
-                            <p class="fw-semibold">Prezzo: <span>{{ dish.prezzo }} &euro;</span></p>
-                            <p class="fw-semibold">Quantità: <span>{{ dish.quantita }}</span></p>
-                        </li>
-                        <li>
-                            <p class="fw-semibold">Prezzo Totale: <span>{{ this.totalPrice }} &euro;</span></p>
-                        </li>
-                    </ul>
+                            <li v-for="dish in dishes">
+                                <p class="fw-semibold">Nome: <span>{{ dish.nome }}</span></p>
+                                <p class="fw-semibold">Prezzo: <span>{{ dish.prezzo }} &euro;</span></p>
+                                <p class="fw-semibold">Quantità: <span>{{ dish.quantita }}</span></p>
+                            </li>
+                            <li>
+                                <p class="fw-semibold">Prezzo Totale: <span>{{ prezzoTotale() }} &euro;</span></p>
+                            </li>
+                        </ul>
                     <div>
                         <button type="submit" class="btn btn-sm indietro text-white fw-semibold me-2">Paga</button>
                         <button type="submit" class="btn btn-sm btn-danger fw-semibold ">Annulla</button>
@@ -50,6 +50,5 @@ export default {
         </div>
     </div>
 </template>
-<style lang="">
-    
-</style>
+
+<style lang="scss" scoped></style>

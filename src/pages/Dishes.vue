@@ -1,10 +1,11 @@
 <script>
 import axios from 'axios';
 import { store } from '../store.js'
-import AppCart from '../components/AppCart.vue'
+import AppCart from '../components/AppCart.vue';
+
 export default {
-    components:{
-        AppCart,
+    components: {
+        AppCart
     },
     data() {
         return {
@@ -13,34 +14,23 @@ export default {
         }
     },
     mounted() {
-        // axios.get(`${store.baseUrl}/api/restaurants/${this.$route.params.slug}`).then((response) => {
-        axios.get(`${store.baseUrl}/api/restaurants/ristorante-al-piave`).then((response) => {
+        axios.get(`${store.baseUrl}/api/restaurants/${this.$route.params.slug}`).then((response) => {
             if (response.data.success) {
                 this.dishes = response.data.results;
                 this.loading = false;
             }
         })
     },
-    computed: {
-
-    },
     methods: {
         aggiungiQuantita(dish) {
-            // const i = this.store.cart.findIndex(dish => dish.nome === dish.nome);
-
             dish.quantita++;
         },
         togliQuantita(dish) {
-
             dish.quantita--;
-        },
-        totaleQuantita(dish) {
-            return dish.quantita * dish.prezzo;
         }
     },
 }
 </script>
-        
 <template lang="">
     <div class="container" >
         <div class="row" >
@@ -52,7 +42,6 @@ export default {
                         <div class="p-3">
                             <p class="fw-semibold text-center">Nome Piatto: {{ dish.nome }}</p>
                             <p class="text-center fw-semibold">Prezzo: {{ dish.prezzo }}&euro;</p>
-                            <p class="text-center fw-semibold">Prezzo Totale: {{ totaleQuantita(dish) }}&euro;</p>
                             <div class="d-flex justify-content-around align-items-center">
                                 <button class="btn btn-sm indietro text-white fw-semibold mx-2" :disabled="dish.quantita == 0" @click="togliQuantita(dish)"><i class="fa-solid fa-minus"></i></button>
                                 <span class="fw-semibold">{{ dish.quantita }}</span>
@@ -63,7 +52,7 @@ export default {
                 </div>
             </div>
             <div class="col-6 " >
-                <AppCart/>
+                <AppCart :dishes="this.dishes"/>
             </div>
         </div>
     </div>

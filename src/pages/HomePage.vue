@@ -8,7 +8,7 @@ export default {
     name: 'HomePage',
     components: {
         RicercaCat,
-        AppJumbo, 
+        AppJumbo,
         ListaRistoranti,
     }
 }
@@ -17,9 +17,6 @@ export default {
     <AppJumbo></AppJumbo>
     <RicercaCat></RicercaCat>
     <ListaRistoranti></ListaRistoranti>
-    <router-link :to="{ name: 'dishes'}" class="login-button">
-        VAI A ELENCO PIATTI
-    </router-link>
 </template>
 <style lang="">
     
