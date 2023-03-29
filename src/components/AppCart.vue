@@ -31,15 +31,15 @@ export default {
                 <div class="card shadow" style="width: 18rem;">
                     <div class="card-body">
                         <ul class="list-unstyled">
-                        <li v-for="dish in dishes">
-                            <p class="fw-semibold">Nome: <span>{{ dish.nome }}</span></p>
-                            <p class="fw-semibold">Prezzo: <span>{{ dish.prezzo }} &euro;</span></p>
-                            <p class="fw-semibold">Quantità: <span>{{ dish.quantita }}</span></p>
-                        </li>
-                        <li>
-                            <p class="fw-semibold">Prezzo Totale: <span>{{ prezzoTotale() }} &euro;</span></p>
-                        </li>
-                    </ul>
+                            <li v-for="dish in dishes">
+                                <p class="fw-semibold">Nome: <span>{{ dish.nome }}</span></p>
+                                <p class="fw-semibold">Prezzo: <span>{{ dish.prezzo }} &euro;</span></p>
+                                <p class="fw-semibold">Quantità: <span>{{ dish.quantita }}</span></p>
+                            </li>
+                            <li>
+                                <p class="fw-semibold">Prezzo Totale: <span>{{ prezzoTotale() }} &euro;</span></p>
+                            </li>
+                        </ul>
                     <div>
                         <button type="submit" class="btn btn-sm indietro text-white fw-semibold me-2">Paga</button>
                         <button type="submit" class="btn btn-sm btn-danger fw-semibold ">Annulla</button>

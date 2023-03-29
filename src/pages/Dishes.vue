@@ -42,7 +42,6 @@ export default {
                         <div class="p-3">
                             <p class="fw-semibold text-center">Nome Piatto: {{ dish.nome }}</p>
                             <p class="text-center fw-semibold">Prezzo: {{ dish.prezzo }}&euro;</p>
-                            <!-- <p class="text-center fw-semibold">Prezzo Totale: {{ totaleQuantita(dish) }}&euro;</p> -->
                             <div class="d-flex justify-content-around align-items-center">
                                 <button class="btn btn-sm indietro text-white fw-semibold mx-2" :disabled="dish.quantita == 0" @click="togliQuantita(dish)"><i class="fa-solid fa-minus"></i></button>
                                 <span class="fw-semibold">{{ dish.quantita }}</span>

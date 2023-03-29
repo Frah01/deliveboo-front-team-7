@@ -13,29 +13,6 @@ export default {
 
 }
 </script>
-<!-- <template lang="">
-    <router-link :to="{ name: 'dishes', params: { slug: restaurant.slug }}">
-        <div class="card d-flex flex-wrap">
-            <div class="card-body">
-                <div class="card-img-top d-flex justify-content-center">
-                    <img :src="restaurant.immagine != null ? `${restaurant.immagine}`: 'https://artsmidnorthcoast.com/wp-content/uploads/2014/05/no-image-available-icon-6.png'" :alt="restaurant.nome" class="img-fluid">
-                </div>
-                <div class="card-title">
-                    <h3>{{ restaurant.nome}}</h3>
-                    <div class="d-flex">
-                        <strong>categoria:  </strong>
-                        <p class="" v-if="restaurant.categoria">
-                            {{ restaurant.categoria.nome}}
-                        </p>
-                        <p v-else>
-                            nessuna categoria selezionata
-                        </p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </router-link>
-</template> -->
 
 <template lang="">
     <router-link :to="{ name: 'dishes', params: { slug: restaurant.slug }}" class="text-decoration-none">
@@ -61,7 +38,7 @@ export default {
     </router-link> 
 </template>
 
-<style lang="scss">
+<style lang="scss" scoped>
 .h-200 {
     height: 200px;
 
