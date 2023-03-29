@@ -40,7 +40,7 @@ export default {
                             <p class="fw-semibold">Prezzo Totale: <span>{{ this.totalPrice }} &euro;</span></p>
                         </li>
                     </ul>
-                    <div class="">
+                    <div>
                         <button type="submit" class="btn btn-sm indietro text-white fw-semibold me-2">Paga</button>
                         <button type="submit" class="btn btn-sm btn-danger fw-semibold ">Annulla</button>
                     </div>
