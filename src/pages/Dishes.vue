@@ -9,7 +9,8 @@ export default {
         }
     },
     mounted() {
-        axios.get(`${store.baseUrl}/api/restaurants/${this.$route.params.slug}`).then((response) => {
+        // axios.get(`${store.baseUrl}/api/restaurants/${this.$route.params.slug}`).then((response) => {
+        axios.get(`${store.baseUrl}/api/restaurants/ristorante-al-piave`).then((response) => {
             if (response.data.success) {
                 this.dishes = response.data.results;
                 this.loading = false;

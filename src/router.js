@@ -6,6 +6,7 @@ import HomePage from './pages/HomePage.vue';
 import ChiSiamo from './pages/ChiSiamo.vue';
 import Contatti from './pages/Contatti.vue';
 import Collab from './pages/Collab.vue';
+import Dishes from './pages/Dishes.vue';
 import ThankYou from './pages/ThankYou.vue';
 
 const router = createRouter({
@@ -25,6 +26,11 @@ const router = createRouter({
             path: '/contatti',
             name: 'contatti',
             component: Contatti,
+        },
+        {
+            path: '/dishes',
+            name: 'dishes',
+            component: Dishes,
         },
         {
             path: '/lavora-con-noi',

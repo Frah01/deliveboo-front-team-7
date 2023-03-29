@@ -14,6 +14,9 @@ export default {
 <template lang="">
     <AppJumbo></AppJumbo>
     <RicercaCat></RicercaCat>
+    <router-link :to="{ name: 'dishes'}" class="login-button">
+        VAI A ELENCO PIATTI
+    </router-link>
 </template>
 <style lang="">
     
