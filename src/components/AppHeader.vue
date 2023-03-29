@@ -30,7 +30,7 @@
         </div>
         <div class="col-md-3 col-lg-4 my-2">
             <ul class="d-flex list-unstyled justify-content-center align-content-center my-0">
-                <li class="nav-item px-5 " v-for="(item,index) in menuItems" :key="index">
+                <li class="nav-item mx-5 " v-for="(item,index) in menuItems" :key="index">
                     <router-link :to="{ name: item.routeName}" class="login-button">
                         {{ item.label }}
                     </router-link>

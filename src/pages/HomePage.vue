@@ -3,9 +3,10 @@
 import RicercaCat from '../components/RicercaCat.vue';
 import AppJumbo from '../components/AppJumbo.vue';
 import ListaRistoranti from '../components/ListaRistoranti.vue';
+
 export default {
     name: 'HomePage',
-    components:{
+    components: {
         RicercaCat,
         AppJumbo, 
         ListaRistoranti,
@@ -13,16 +14,12 @@ export default {
 }
 </script>
 <template lang="">
-
-<AppJumbo></AppJumbo>
-     <div class="container">
-            <div class="row" >
-                <div class="col-12 mt-5">
-                    <RicercaCat></RicercaCat>
-                    <ListaRistoranti></ListaRistoranti>
-                </div>
-            </div>
-        </div>
+    <AppJumbo></AppJumbo>
+    <RicercaCat></RicercaCat>
+    <ListaRistoranti></ListaRistoranti>
+    <router-link :to="{ name: 'dishes'}" class="login-button">
+        VAI A ELENCO PIATTI
+    </router-link>
 </template>
 <style lang="">
     
