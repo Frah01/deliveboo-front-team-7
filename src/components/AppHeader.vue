@@ -51,6 +51,7 @@
 <style lang="scss">
     .deliveboo-navbar {
     background-color: #00CDBE;
+    width: 100vw;
     height: 10vh;
 
     .container-logo {
