@@ -2,39 +2,55 @@
 import { store } from '../store';
 export default {
     name: "AppCart",
-    data(){
-        return{
-            store,
-            totalPrice: 0,
+    props: {
+        dishes: Object
+    },
+    data() {
+        return {
+            store
         };
     },
     methods: {
-        addPrice(){
-            let total = 0;
-            for(let i = 0; i < this.store.cart.length; i++){
-                const itemTotal = parseFloat(this.store.cart[i].prezzo)* this.store.cart[i].quantita;
-                total += itemTotal
+        prezzoTotale() {
+            let total_price = 0;
+            let all_dishes = this.dishes;
+            for (let dish in all_dishes) {
+                total_price += all_dishes[dish].prezzo * all_dishes[dish].quantita;
             }
-            this.totalPrice = total.toFixed(2)
+            return total_price;
         }
-    },
-    mounted(){
-        this.addPrice(this.store.cart)
     }
 }
 </script>
+
 <template lang="">
-    <div>
-        <ul>
-            <li v-for="dish in this.store.cart">
-                {{ dish.nome }}
-                {{ dish.prezzo }}
-                {{ dish.quantita }}
-            </li>
-            <p>Totale: {{ totalPrice }} &euro;</p>
-        </ul>
+    <div class="container" >
+        <div class="row" >
+            <h2 class="mt-5 text-center">CARRELLO</h2>
+            <div class="col-12 mt-5 d-flex justify-content-center">
+                <div class="card shadow" style="width: 18rem;">
+                    <div class="card-body">
+                        <ul class="list-unstyled">
+                            <li v-for="dish in dishes">
+                                <div v-if="dish.quantita != 0">
+                                    <p class="fw-semibold">Nome: <span>{{ dish.nome }}</span></p>
+                                    <p class="fw-semibold">Prezzo: <span>{{ dish.prezzo }} &euro;</span></p>
+                                    <p class="fw-semibold">Quantità: <span>{{ dish.quantita }}</span></p>
+                                </div>
+                            </li>
+                            <li>
+                                <p class="fw-semibold">Prezzo Totale: <span>{{ prezzoTotale() }} &euro;</span></p>
+                            </li>
+                        </ul>
+                    <div>
+                        <button type="submit" class="btn btn-sm indietro text-white fw-semibold me-2">Paga</button>
+                        <button type="submit" class="btn btn-sm btn-danger fw-semibold ">Annulla</button>
+                    </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 </template>
-<style lang="">
-    
-</style>
+
+<style lang="scss" scoped></style>
