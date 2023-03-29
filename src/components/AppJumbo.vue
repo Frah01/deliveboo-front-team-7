@@ -92,6 +92,7 @@ export default {
     .slider {
         box-shadow: 0 10px 20px -5px rgba(0, 0, 0, .125);
         height: 150px;
+        width: 100vw;
         overflow: hidden;
         margin-bottom: 20px;
 
