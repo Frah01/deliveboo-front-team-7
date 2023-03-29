@@ -5,7 +5,7 @@ export default {
 </script>
 <template lang="">
     <div>
-        <h5 class="text-center ">categorie</h5>
+        <h5 class="text-center mt-5">categorie</h5>
     </div>
     <div class="categorie d-flex ">
         <div class="square italiana text-center">
@@ -38,15 +38,13 @@ export default {
 
 <style lang="scss" scoped>
     .categorie{
-        width: 97vw;
-        position: relative;
-        right:50px;
+        width: 100%;
         background-color:#00CDBE ; 
         height: 120px;
        .square{
         width: calc(100% / 8);
-        height: 70%;
-        border-radius: 5px 5px 5px 5px;
+        height: 80%;
+        border-radius: 5px;
 
         &:hover{
             border: 1px solid white;
@@ -106,11 +104,7 @@ export default {
 
        .nomeCat{
         color: white;
-        position: relative;
-        top:80px;
         margin-top:5px;
-        
-      
        }
      
      
