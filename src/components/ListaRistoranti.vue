@@ -51,13 +51,13 @@ export default {
                         <div class="col-12 d-flex justify-content-center my-3">
                             <ul class="pagination">
                                 <li :class="currentPage == 1 ? 'disabled' :'page-item'">
-                                <button class="page-link btn " @click="getRestaurant(currentPage - 1)">indietro</button>
+                                <button class="page-link btn text-white fw-semibold me-2" @click="getRestaurant(currentPage - 1)">Indietro</button>
                                 </li>
                                 <li :class="currentPage == i ? 'disabled' : 'page-item'" v-for="i in lastPage" :key="i">
                                 <button class="page-link " @click="getRestaurant(i)">{{ i }}</button>
                                 </li>
                                 <li :class="currentPage == lastPage ? 'disabled' :'page-item'">
-                                <button class="page-link btn btn-success" @click="getRestaurant(currentPage + 1)">avanti</button>
+                                <button class="page-link btn btn-success text-white fw-semibold ms-2" @click="getRestaurant(currentPage + 1)">Avanti</button>
                                 </li>
                             </ul>
                         </div>

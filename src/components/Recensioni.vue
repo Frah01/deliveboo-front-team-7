@@ -80,7 +80,8 @@ export default {
 <style lang="scss" scoped>
 
     .contenitore-reviews{
-        width: 100vw;
+        width: 100%;
+        height: 500px;
         background-color: rgba(208, 235, 153, 0.7);
         display: flex;
         justify-content: center;

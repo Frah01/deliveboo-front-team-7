@@ -50,8 +50,9 @@
 </template>
 <style lang="scss">
     .deliveboo-navbar {
-    background-color: rgb(0, 205, 190);
-    width: 100vw;
+
+    background-color: #00CDBE;
+    width: 100%;
     height: 10vh;
 
     .container-logo {

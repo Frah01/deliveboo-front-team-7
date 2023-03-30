@@ -53,7 +53,7 @@
         <div class="row ">
             <div class="col-12 jumbotron-deliveroo" >
                 <div class="offset-3 col-6 mt-3">
-                    <router-link :to="{ name : 'homepage'}" class="btn btn-sm indietro text-white fw-semibold" >Torna alla Homepage</router-link>
+                    <router-link :to="{ name : 'homepage'}" class="btn btn-sm indietro text-white fw-semibold" ><i class="fa-solid fa-arrow-left me-2"></i>Torna alla Homepage</router-link>
                 </div>
                 <div class="offset-3 col-6">
                     <div class="card  p-3 my-5" >
