@@ -38,7 +38,12 @@ export default {
                 <h2 class="mt-5 text-center">MENU'</h2>
                 <div class="my-5 mx-2 d-flex justify-content-center" v-for="(dish, index) in this.dishes" :key="index">
                     <div class="card  shadow" style="width: 18rem;">
-                        <img class="card-img-top" :src="dish.immagine != null ? `${dish.immagine}`: 'https://artsmidnorthcoast.com/wp-content/uploads/2014/05/no-image-available-icon-6.png'" alt="">
+                        <div v-if="dish.immagine.includes('dish_image')">
+                            <img class="card-img-top" :src="`${store.baseUrl}/storage/${dish.immagine}`">
+                        </div>
+                        <div v-else>
+                            <img class="card-img-top" :src="dish.immagine != null ? `${dish.immagine}`: 'https://artsmidnorthcoast.com/wp-content/uploads/2014/05/no-image-available-icon-6.png'" alt="">
+                        </div>
                         <div class="p-3">
                             <p class="fw-semibold text-center">Nome Piatto: {{ dish.nome }}</p>
                             <p class="text-center fw-semibold">Prezzo: {{ dish.prezzo }}&euro;</p>
