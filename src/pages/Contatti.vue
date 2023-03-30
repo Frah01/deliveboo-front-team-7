@@ -62,7 +62,7 @@
                     <div class="col-12 col-md-6">
                         <div class="text-center">
                             <div class="mt-2">
-                                <span class="fw-semibold"><i class="fas fa-map me-2"></i> Indirizzo:</span>Roma
+                                <span class="fw-semibold"><i class="fas fa-map me-2"></i> Indirizzo:</span> Roma
                             </div>
                             <div class="mt-2">
                                 <span class="fw-semibold"><i class="fas fa-book me-2"></i>Partita Iva:</span> 58382716593
@@ -151,7 +151,7 @@
 <style lang="scss" scoped>
 .jumbotron-deliveroo {
     width: 100vw;
-    height: 850px;
+    height: 90vh;
     background-image: url('https://images8.alphacoders.com/942/thumb-1920-942495.jpg');
     background-position: center;
     background-size: cover;

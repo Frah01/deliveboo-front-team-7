@@ -50,6 +50,7 @@
 </template>
 <style lang="scss">
     .deliveboo-navbar {
+
     background-color: #00CDBE;
     width: 100%;
     height: 10vh;
@@ -77,7 +78,7 @@
     
         &:hover,
         &:active {
-                color: #440063 !important;
+                color: rgb(68, 0, 99) !important;
         }
     }
 
