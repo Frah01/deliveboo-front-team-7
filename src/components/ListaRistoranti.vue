@@ -12,6 +12,7 @@ export default {
         return {
             store,
             search_title: '',
+            filter_category: '',
             restaurants: [],
             currentPage: 1,
             lastPage: null
@@ -34,7 +35,10 @@ export default {
     computed: {
         filterRestaurants() {
             return this.restaurants.filter(restaurant => restaurant.nome.toLowerCase().includes(this.search_title.toLocaleLowerCase()));
-        }
+        },
+        
+      
+
     },
     mounted() {
         this.getRestaurant(this.currentPage)
@@ -43,7 +47,7 @@ export default {
 </script>
 <template lang="">
     <div class="container">
-        <input type="text" placeholder="inserisci" v-model="search_title">
+        <input class="search_bar mt-3" type="text" placeholder="cerca il tuo ristorante preferito" v-model="search_title">
         <div class="col-12 d-flex  flex-wrap">
             <div class="row">
                 <!-- <div class="col-4 " v-for="restaurant in restaurants" :key= "restaurant.id" > -->
@@ -75,5 +79,12 @@ export default {
 .btn {
     background-color: #00CDBE;
     color: white;
+}
+.search_bar{
+    width: 100%;
+    border: 2px solid #00CDBE ;
+    border-radius: 20px;
+    
+   
 }
 </style>
