@@ -4,48 +4,53 @@ import { store } from '../store';
 import CardRistoranti from './CardRistoranti.vue';
 export default {
     name: 'ListaRistoranti',
-    components:{
+    components: {
         CardRistoranti,
     },
 
-        data(){
-            return{
-                store,
-                restaurants: [],
-                currentPage:1,
-                lastPage:null
-            }
-        },
-        methods:{
-            getRestaurant(restaurant_page){
-                axios.get(`${this.store.baseUrl}/api/restaurants`, {params: {page: restaurant_page}}).then((response)=>{
-                    if(response.data.success){
-                        this.restaurants = response.data.results.data;
-                        this.currentPage = response.data.results.current_page;
-                        this.lastPage = response.data.results.last_page
-                    }
-                    else{
-
-                    }
-                });
-            }
-        }, 
-        mounted(){
-            this.getRestaurant(this.currentPage)
+    data() {
+        return {
+            store,
+            search_title: '',
+            restaurants: [],
+            currentPage: 1,
+            lastPage: null
         }
+    },
+    methods: {
+        getRestaurant(restaurant_page) {
+            axios.get(`${this.store.baseUrl}/api/restaurants`, { params: { page: restaurant_page } }).then((response) => {
+                if (response.data.success) {
+                    this.restaurants = response.data.results.data;
+                    this.currentPage = response.data.results.current_page;
+                    this.lastPage = response.data.results.last_page
+                }
+                else {
+
+                }
+            });
+        }
+    },
+    computed: {
+        filterRestaurants() {
+            return this.restaurants.filter(restaurant => restaurant.nome.toLowerCase().includes(this.search_title.toLocaleLowerCase()));
+        }
+    },
+    mounted() {
+        this.getRestaurant(this.currentPage)
+    }
 };
 </script>
 <template lang="">
     <div class="container">
-
+        <input type="text" placeholder="inserisci" v-model="search_title">
         <div class="col-12 d-flex  flex-wrap">
-                    <div class="row">
-                        <div class="col-4 " v-for="restaurant in restaurants" :key= "restaurant.id" >
-                        <CardRistoranti :restaurant="restaurant" :baseUrl="baseUrl"></CardRistoranti>
-                    </div>
-                    </div>
-                   
-                    
+            <div class="row">
+                <!-- <div class="col-4 " v-for="restaurant in restaurants" :key= "restaurant.id" > -->
+                <div class="col-4 " v-for="restaurant in filterRestaurants" :key= "restaurant.id" >
+                    <CardRistoranti :restaurant="restaurant" :baseUrl="baseUrl"></CardRistoranti>
+                </div>
+            </div>
         </div>
         <div class="row">
                         <div class="col-12 d-flex justify-content-center my-3">
@@ -67,8 +72,8 @@ export default {
 </template>
 
 <style lang="scss" scoped>
-    .btn{
-        background-color:#00CDBE  ;
-        color: white;
-    }
+.btn {
+    background-color: #00CDBE;
+    color: white;
+}
 </style>
