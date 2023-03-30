@@ -20,11 +20,16 @@ export default {
 </script>
 <template lang="">
     <AppJumbo></AppJumbo>
-    <RicercaCat></RicercaCat>
-    <ListaRistoranti></ListaRistoranti>
+    <div class="main d-flex">
+        <RicercaCat></RicercaCat>
+        <ListaRistoranti></ListaRistoranti>
+    </div>
+  
     <Recensioni></Recensioni>
     <AppFooter></AppFooter>
 </template>
-<style lang="">
-    
+<style lang="scss" scoped>
+    .main{
+        width: 100%;
+    }
 </style>
