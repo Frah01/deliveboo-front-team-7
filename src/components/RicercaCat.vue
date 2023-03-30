@@ -4,46 +4,54 @@ export default {
 }
 </script>
 <template lang="">
-    <div>
-        <h5 class="text-center mt-5">categorie</h5>
+    <div class="container-fluid backg-color">
+        <div class="row text-center">
+            <div class="col" >
+                <h2 class="text-white mt-2">Categorie</h2>
+            </div>
+        </div>
     </div>
-    <div class="categorie d-flex ">
-        <div class="square italiana text-center">
-            <h6 class="nomeCat">Italiana</h6>
+    <div class="container-fluid backg-color">
+        <div class="row" >
+            <div class="col-12 d-flex justify-content-center flex-wrap pb-3" >
+                <div class="square italiana text-center shadow">
+                    <h6 class="nomeCat badge bg-warning shadow">Italiana</h6>
+                </div>
+                <div class="square vegetariana text-center shadow">
+                    <h6 class="nomeCat badge bg-warning shadow">Vegetariano</h6>
+                </div>
+                <div class="square vegano text-center shadow">
+                    <h6 class="nomeCat badge bg-warning shadow">Vegano</h6>
+                </div>
+                <div class="square gourmet text-center shadow">
+                    <h6 class="nomeCat badge bg-warning shadow">Gourmet</h6>
+                </div>
+                <div class="square cinese text-center shadow">
+                    <h6 class="nomeCat badge bg-warning shadow">Cinese</h6>
+                </div>
+                <div class="square giapponese text-center shadow">
+                    <h6 class="nomeCat badge bg-warning shadow">Giapponese</h6>
+                </div>
+                <div class="square FastFood text-center shadow">
+                    <h6 class="nomeCat badge bg-warning shadow">Fast Food</h6>
+                </div>
+                <div class="square pizzeria text-center shadow">
+                    <h6 class="nomeCat badge bg-warning shadow">Pizza</h6>
+                </div>
+            </div>
         </div>
-        <div class="square vegetariana text-center">
-            <h6 class="nomeCat">Vegetariano</h6>
-        </div>
-        <div class="square vegano text-center">
-            <h6 class="nomeCat">Vegano</h6>
-        </div>
-        <div class="square gourmet text-center">
-            <h6 class="nomeCat">Gourmet</h6>
-        </div>
-        <div class="square cinese text-center">
-            <h6 class="nomeCat">Cinese</h6>
-        </div>
-        <div class="square giapponese text-center">
-            <h6 class="nomeCat">Giapponese</h6>
-        </div>
-        <div class="square FastFood text-center">
-            <h6 class="nomeCat">Fast Food</h6>
-        </div>
-        <div class="square pizzeria text-center">
-            <h6 class="nomeCat">Pizza</h6>
-        </div>
-        
     </div>
 </template>
 
 <style lang="scss" scoped>
-    .categorie{
-        width: 100%;
-        background-color:#00CDBE ; 
-        height: 120px;
+
+.backg-color{
+    background-color:#00CDBE ;
+}
+
        .square{
         width: calc(100% / 8);
-        height: 80%;
+        height: 100px;
         border-radius: 5px;
 
         &:hover{
@@ -112,7 +120,7 @@ export default {
      
     
     
-    }
+    
    
     
 </style>
