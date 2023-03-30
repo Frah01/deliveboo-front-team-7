@@ -9,6 +9,7 @@ export default {
                     foto: 'https://tse3.mm.bing.net/th?id=OIP.rFQyRuKghsBDKgQzpMdI0QHaE8&pid=Api',
                     descrizione: 'Ordino con Deliveroo da diversi anni, almeno 6 volte al mese e mi sono sempre trovata benissimo. I rider suonano al citofono (come è giusto che sia) oppure chiamano quando si trovano sotto casa. Consegne sempre puntuali e curate!',
                     stars: '★★★★★',
+                    opacity: 0
                 },
                 {
                     name: 'Jeremy Spielberg',
@@ -40,16 +41,38 @@ export default {
     methods: {
     slider(){
         setInterval(() => {
-            this.setSlider(this.activeItem == 4 ? 0 : this.activeItem + 1)
-        }, 3000);
+            this.setSlider(this.activeItem == 4 ? 0 : this.activeItem + 1);
+        }, 4000);
+        let array = this.reviews.length;
+       setInterval(function() {
+            this.activeItem = (this.activeItem + 1) % array;
+            $(".card-reviews").ready(function(){
+                $(".img-review").fadeOut(500, ()=>{
+                    $(".img-review").fadeIn(500);
+                });
+                $(".nome-review").fadeOut(500, ()=>{
+                    $(".nome-review").fadeIn(500);
+                });
+                $(".stars").fadeOut(500, ()=>{
+                    $(".stars").fadeIn(500);
+                });
+                $(".descrizione").fadeOut(500, ()=>{
+                    $(".descrizione").fadeIn(500);
+                })
+            })
+             
+        }, 4000);
+
+        
     },
     setSlider(index){
-        this.activeItem = index
+            this.activeItem = index
     }
    },
    beforeMount(){
     this.slider()
-   }
+   },
+
 }
 </script>
 
@@ -57,7 +80,7 @@ export default {
     <div class="contenitore-reviews">
         <div class="row-review">
             <h1>Noi ci mettiamo tutto il nostro impegno! Leggi cosa dicono di noi i nostri clienti!</h1>
-            <div class="col-12 card-reviews">
+            <div class="col-12 card-reviews" data-random="0" data-speed="4000" data-interval="151">
                 <div class="img-review" >
                     <img :src="reviews[this.activeItem].foto" alt="">
                 </div>
@@ -81,7 +104,6 @@ export default {
 
     .contenitore-reviews{
         width: 100%;
-        height: 500px;
         background-color: rgba(208, 235, 153, 0.7);
         display: flex;
         justify-content: center;
@@ -104,6 +126,13 @@ export default {
                 margin: 0 auto;
                 border-radius: 10px;
                 text-align: center;
+                opacity: 1;
+                transition: opacity 1s infinite;
+                
+
+                .load{
+                    opacity: 1;
+                }
 
                 .nome-review{
                     color: #440063;
@@ -114,6 +143,7 @@ export default {
                 .descrizione{
                     color: rgba(0, 0, 0, 0.7);
                     font-size: 15px;
+                    height: 10%;
                     margin: 20px 0;
                 }
                 .img-review{
