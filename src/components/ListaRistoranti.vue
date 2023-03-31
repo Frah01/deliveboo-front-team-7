@@ -33,7 +33,6 @@ export default {
             axios.get(`${this.store.baseUrl}/api/restaurants`, { params: { nome: this.search_title, category: 1 } }).then((response) => {
                 if (response.data.success) {
                     this.restaurants = response.data.results;
-                    console.log(this.restaurants);
                 }
             });
         },

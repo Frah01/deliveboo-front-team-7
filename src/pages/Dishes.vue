@@ -18,11 +18,22 @@ export default {
     mounted() {
         axios.get(`${store.baseUrl}/api/restaurants/${this.$route.params.slug}`).then((response) => {
             if (response.data.success) {
-                this.dishes = response.data.results;
-                this.loading = false;
-                
+                if (window.localStorage.length == 0) {
+                    this.dishes = response.data.results;
+                    this.loading = false;
+                }
+                else {
+                    let storage = (JSON.parse(localStorage.getItem(STORAGE_KEY)));
+                    this.dishes = response.data.results;
+                    this.loading = false;
+
+                    for (let i in storage) {
+                        if (storage[i].restaurant_id == this.dishes[i]['restaurant_id']) {
+                            this.dishes = storage;
+                        }
+                    }
+                }
             }
-            this.dishes = JSON.parse(localStorage.getItem(STORAGE_KEY) || '[]');
         })
     },
     methods: {
@@ -32,6 +43,7 @@ export default {
         },
         togliQuantita(dish) {
             dish.quantita--;
+            localStorage.setItem(STORAGE_KEY, JSON.stringify(this.dishes));
         }
     },
 }
