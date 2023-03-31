@@ -131,7 +131,7 @@ export default {
                                 <h5>Porta deliveroo con te</h5>
                             </li>
                             <li>
-                                <div class="d-flex mt-3">
+                                <div class="d-flex flex-wrap mt-3">
                                     <a class="me-3" href=""><i class="fa-brands fa-facebook fa-2x"></i></a>
                                     <a class="me-3" href=""><i class="fa-brands fa-twitter fa-2x"></i></a>
                                     <a class="me-3" href=""><i class="fa-brands fa-instagram fa-2x"></i></a>
