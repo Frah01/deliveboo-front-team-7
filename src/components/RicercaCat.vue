@@ -1,5 +1,5 @@
 <script>
-
+import axios from 'axios';
 import { store } from '../store';
 export default {
     name: 'RicercaCat',
@@ -8,6 +8,18 @@ export default {
             store, 
             filter_category: '',
         }
+    },
+    methods: {
+        getCategories(){
+            axios.get(`${this.store.baseUrl}/api/categories` ).then((response) => {
+               
+                    this.categories = response.data.results; 
+                    
+            });
+        }
+    },
+    mounted() {
+        this.getCategories();
     },
     
 
@@ -27,16 +39,18 @@ export default {
         </div>
         <div class="container-fluid backg-color">
             <div class="row" >
-                <div class="col-12 d-flex justify-content-center flex-wrap pb-3" >
-                    <h6 class="nomeCat badge shadow">Italiana</h6>
-                    <h6 class="nomeCat badge badge-verde shadow">Vegetariano</h6>
-                    <h6 class="nomeCat badge shadow">Vegano</h6>
-                    <h6 class="nomeCat badge badge-verde shadow">Gourmet</h6>
-                    <h6 class="nomeCat badge shadow">Cinese</h6>
-                    <h6 class="nomeCat badge badge-verde shadow">Giapponese</h6>
-                    <h6 class="nomeCat badge shadow">Fast Food</h6>
-                    <h6 class="nomeCat badge badge-verde shadow">Pizza</h6>
-                </div>
+              
+                <div v-for="category in this.categories" :key="category.id">
+                    
+                        
+                    <button onclick class="my-2 mx-1 badge" for="form-check-label">
+                    {{category.nome}}</button>
+                
+           
+
+              </div>
+              
+               
             </div>
         </div>
     </div>
@@ -46,6 +60,7 @@ export default {
 .container{
     width:40%;
 }
+
 .badge{
     width: 100%;
     color:  #00CDBE;
@@ -54,21 +69,15 @@ export default {
     margin-top:5px;
     padding: 1rem 3rem 1rem 3rem;
     font-size: 1rem;
+    background-color: white ;
+    
 
     &:hover{
         color: white;
         background-color:#00CDBE; ;
     }
 }
-.badge-verde{
-    color:rgb(68, 0, 99);
-    border:1px solid rgb(68, 0, 99);
 
-    &:hover{
-        color: white;
-        background-color:rgb(68, 0, 99) ;
-    }
-}
 .titolo{
     color:rgb(68, 0, 99) ;
 }
