@@ -3,6 +3,8 @@ import axios from 'axios';
 import { store } from '../store.js'
 import AppCart from '../components/AppCart.vue';
 
+const STORAGE_KEY = 'deliveboo-storage-key'
+
 export default {
     components: {
         AppCart
@@ -18,12 +20,15 @@ export default {
             if (response.data.success) {
                 this.dishes = response.data.results;
                 this.loading = false;
+                
             }
+            this.dishes = JSON.parse(localStorage.getItem(STORAGE_KEY) || '[]');
         })
     },
     methods: {
         aggiungiQuantita(dish) {
             dish.quantita++;
+            localStorage.setItem(STORAGE_KEY, JSON.stringify(this.dishes));
         },
         togliQuantita(dish) {
             dish.quantita--;
