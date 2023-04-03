@@ -6,48 +6,49 @@ export default {
 <template lang="">
     <div class="container-fluid backg-chi-siamo">
         <div class="row fst-italic" >
-            <h2 class="fw-semibold text-center p-5 text-white">Chi siamo</h2>
+            <h2 class="fw-semibold text-center my-3 py-3 text-white">Team 7 - Classe 82</h2>
+            <p class="text-center p-1 text-white sottotitolo">Ciao a tutti! Questa è la sezione dedicata al nostro team! Sotto tutte le foto potrete trovare i nostri link ai profili LinkedIn e GitHub, dove potrete visionare tutti gli altri nostri progetti</p>
         </div>
         <div class="row">
             <div class="d-flex justify content-center py-3 px-0">
                 <div class="col-3 d-flex justify-content-center">
                     <div class="css-border user one">
-                        
                     </div>
                 </div>
                 <div class="col-3 d-flex justify-content-center">
-                    <div class="css-border user one">
-
+                    <div class="css-border user two">
                     </div>
                 </div>
                 <div class="col-3 d-flex justify-content-center">
-                    <div class="css-border user one">
-                        
+                    <div class="css-border user three">
                     </div>
                 </div>
                 <div class="col-3 d-flex justify-content-center">
-                    <div class="css-border user one">
-                        
+                    <div class="css-border user four">
                     </div>
                 </div>
             </div>
         </div>
         <div class="row fst-italic text-center mb-5 text-white">
             <div class="col-3">
-                <h3>Nome</h3>
-                <p class="text-break ">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Odio ut ratione id ipsum similique natus, quod distinctio, quam ad voluptates et dignissimos tempore reprehenderit, accusamus fugit dolor tempora? Dignissimos, minus.</p>
+                <h3>Giuseppe Maisto</h3>
+                <p class="text-break "><a href="https://www.linkedin.com/in/giuseppe-maisto-129299238/" class="m-3"><i class="fa-brands fa-linkedin fa-bounce fa-xl" style="color: #ffffff;"></i></a>
+                <a href="https://github.com/giuseppemaisto" class="m-3"><i class="fa-brands fa-github fa-bounce fa-xl" style="color: #ffffff;"></i></a></p>
             </div>
             <div class="col-3">
-                <h3>Nome</h3>
-                <p class="text-break ">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Odio ut ratione id ipsum similique natus, quod distinctio, quam ad voluptates et dignissimos tempore reprehenderit, accusamus fugit dolor tempora? Dignissimos, minus.</p>
+                <h3>Alessia Menon</h3>
+                <p class="text-break "><a href="https://www.linkedin.com/in/alessia-menon/"  class="m-3"><i class="fa-brands fa-linkedin fa-bounce fa-xl" style="color: #ffffff;"></i></a>
+                <a href="https://github.com/alessiam1909" class="m-3"><i class="fa-brands fa-github fa-bounce fa-xl" style="color: #ffffff;"></i></a></p>
             </div>
             <div class="col-3">
-                <h3>Nome</h3>
-                <p class="text-break ">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Odio ut ratione id ipsum similique natus, quod distinctio, quam ad voluptates et dignissimos tempore reprehenderit, accusamus fugit dolor tempora? Dignissimos, minus.</p>
+                <h3>Davide Rossi</h3>
+                <p class="text-break "><a href="https://www.linkedin.com/in/davide-rossi-95b478214/"  class="m-3"><i class="fa-brands fa-linkedin fa-bounce fa-xl" style="color: #ffffff;"></i></a>
+                <a href="https://github.com/dunzolo" class="m-3"><i class="fa-brands fa-github fa-bounce fa-xl" style="color: #ffffff;"></i></a></p>
             </div>
             <div class="col-3">
-                <h3>Nome</h3>
-                <p class="text-break ">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Odio ut ratione id ipsum similique natus, quod distinctio, quam ad voluptates et dignissimos tempore reprehenderit, accusamus fugit dolor tempora? Dignissimos, minus.</p>
+                <h3>Francesco Vinario</h3>
+                <p class="text-break "><a href="https://www.linkedin.com/in/francesco-vinario-02063526a/"  class="m-3"><i class="fa-brands fa-linkedin fa-bounce fa-xl" style="color: #ffffff;"></i></a>
+                <a href="https://github.com/Frah01" class="m-3"><i class="fa-brands fa-github fa-bounce fa-xl" style="color: #ffffff;"></i></a></p>
             </div>
         </div>
         <div class="row backg-footer">
@@ -175,23 +176,25 @@ export default {
 }
 
 .one {
-  background-image: url('https://via.placeholder.com/400x200');
+  background-image: url('public/giuseppe-deliveboo.jpg');
 }
 
 .two {
-  background-image: url('https://via.placeholder.com/200x200');
+  background-image: url('public/alessia-deliveboo.jpg');
 }
 
 .three {
-  background-image: url('https://via.placeholder.com/200x400');
+  background-image: url('public/davide-deliveboo.jpg');
+}
+
+.four{
+    background-image: url('public/francesco-deliveboo.jpg');
 }
 
 .css-border {
-  border: 4px solid rgba(208, 235, 153, 0.7);
+  border: 4px solid rgb(208, 235, 153);
   padding: 2px;
   border-radius: 50%;
-  border-top-color:  rgba(208, 235, 153, 0.7);
-  border-left-color:  rgba(208, 235, 153, 0.7);
   width: 150px;
   height: 150px;
 
@@ -201,9 +204,19 @@ export default {
   }
 }
 
+.sottotitolo{
+    width: 60%;
+    margin: 0 auto;
+}
+
+.text-break{
+    margin-top: 15px;
+}
+
 
     a{
         color: white;
+        transition: all 0.3s;
         &:hover{
             color:  #00CDBE;
         }

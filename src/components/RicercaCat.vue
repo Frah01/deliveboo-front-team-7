@@ -6,7 +6,7 @@ export default {
     data(){
         return{
             store, 
-            filter_category: '',
+            categories: '',
         }
     },
     methods: {
