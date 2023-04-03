@@ -32,7 +32,6 @@ export default {
         //     });
         // },
         getRestaurants() {
-            // return this.restaurants.filter(restaurant => restaurant.nome.toLowerCase().includes(this.search_title.toLocaleLowerCase()));
             axios.get(`${this.store.baseUrl}/api/restaurants`, { params: { nome: this.search_title } }).then((response) => {
                 if (response.data.success) {
                     this.restaurants = response.data.results;
@@ -55,7 +54,6 @@ export default {
                 });
                 restaurants = JSON.parse(JSON.stringify(filtered_restaurants));
 
-                console.log(restaurants);
                 return restaurants;
             }
 
@@ -74,8 +72,11 @@ export default {
             <div class="row">
                 <input class="search_bar mt-3" type="text" placeholder="cerca il tuo ristorante preferito" v-model="search_title" @keyup="getRestaurants">
                 <div class="col-12 d-flex flex-wrap">
-                    <div class="col-4" v-for="restaurant in filterRestaurants" :key= "restaurant.id" >
+                    <div class="col-4" v-for="restaurant in filterRestaurants" :key= "restaurant.id" v-if="filterRestaurants.length > 0">
                         <CardRistoranti :restaurant="restaurant" :baseUrl="baseUrl"></CardRistoranti>
+                    </div>
+                    <div v-else>
+                        <p>NESSUN RISTORANTE TROVATO</p>
                     </div>
                 </div>
             </div>
