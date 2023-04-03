@@ -52,8 +52,8 @@ export default {
             <div class="row" >
                 <div v-for="category in this.categories" :key="category.id">
                     <button type="button" 
-                            class="my-2 mx-1 w-100 btn btn-secondary"
-                            :class="category.attivo ? 'text-danger' : ''"
+                            class="my-2 mx-1 w-100 badge btn btn-secondary"
+                            :class="category.attivo ? 'cate-attiva' : ''"
                             @click="sendCategory(category.id)">{{category.nome}}
                     </button>
                 </div>
@@ -83,6 +83,10 @@ export default {
         background-color: #00CDBE;
         ;
     }
+}
+.cate-attiva{
+    color: white;
+    background-color: #00CDBE;
 }
 
 .titolo {
