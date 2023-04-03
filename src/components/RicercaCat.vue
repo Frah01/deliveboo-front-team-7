@@ -40,26 +40,18 @@ export default {
 
 </script>
 <template lang="">
-    <div class="container">
+
         <div class="container-fluid backg-color">
-            <div class="row text-center">
-                <div class="col" >
-                    <h2 class="titolo mt-2">Categorie</h2>
-                </div>
+            <h2 class="titolo text-center mt-2">Categorie</h2>
+            <div v-for="category in this.categories" :key="category.id">
+                <button type="button" 
+                        class="my-2 mx-1 w-100 badge btn btn-secondary"
+                        :class="category.attivo ? 'cate-attiva' : ''"
+                        @click="sendCategory(category.id)">{{category.nome}}
+                </button>
             </div>
         </div>
-        <div class="container-fluid backg-color">
-            <div class="row" >
-                <div v-for="category in this.categories" :key="category.id">
-                    <button type="button" 
-                            class="my-2 mx-1 w-100 badge btn btn-secondary"
-                            :class="category.attivo ? 'cate-attiva' : ''"
-                            @click="sendCategory(category.id)">{{category.nome}}
-                    </button>
-                </div>
-            </div>
-        </div>
-    </div>
+   
 </template>
 
 <style lang="scss" scoped>

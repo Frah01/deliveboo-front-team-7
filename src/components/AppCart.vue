@@ -18,6 +18,10 @@ export default {
                 total_price += all_dishes[dish].prezzo * all_dishes[dish].quantita;
             }
             return total_price;
+        },
+        Clear(){
+            localStorage.clear();
+            location.reload();
         }
     }
 }
@@ -42,10 +46,10 @@ export default {
                                 <p class="fw-semibold">Prezzo Totale: <span>{{ prezzoTotale() }} &euro;</span></p>
                             </li>
                         </ul>
-                    <div>
-                        <router-link :to="{ name: 'form-payments'}"  class="btn btn-sm indietro text-white fw-semibold me-2">Paga</router-link>
-                        <button type="submit" class="btn btn-sm btn-danger fw-semibold ">Annulla</button>
-                    </div>
+                        <div>
+                            <router-link :to="{ name: 'form-payments'}"  class="btn btn-sm indietro text-white fw-semibold me-2">Paga</router-link>
+                            <button type="submit" class="btn btn-sm btn-danger fw-semibold " @click="Clear()">Svuota</button>
+                        </div>
                     </div>
                 </div>
             </div>
