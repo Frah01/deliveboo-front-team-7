@@ -66,10 +66,12 @@ export default {
 };
 </script>
 <template lang="">
-    <div class="container-fluid">
-        <div class="main d-flex">
-            <RicercaCat @search="updateCategories"/>
-            <div class="row">
+    <div class="container-fluid my-5">
+        <div class="row d-flex">
+            <div class="col-3">
+                <RicercaCat @search="updateCategories"/>
+            </div>
+            <div class="col-9">
                 <input class="search_bar mt-3" type="text" placeholder="cerca il tuo ristorante preferito" v-model="search_title" @keyup="getRestaurants">
                 <div class="col-12 d-flex flex-wrap">
                     <div class="col-4" v-for="restaurant in filterRestaurants" :key= "restaurant.id" v-if="filterRestaurants.length > 0">
@@ -81,6 +83,7 @@ export default {
                 </div>
             </div>
         </div>
+    </div>
         <!-- <div class="row">
             <div class="col-12 d-flex justify-content-center my-3">
                 <ul class="pagination">
@@ -96,7 +99,6 @@ export default {
                 </ul>
             </div>
         </div> -->
-    </div>
 
 </template>
 
