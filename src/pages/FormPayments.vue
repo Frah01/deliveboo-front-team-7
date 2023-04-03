@@ -16,6 +16,10 @@ export default {
                     this.dishes = storage;
     },
     methods: {
+        ClearItem(dish){
+            dish.quantita = 0;
+            localStorage.setItem(STORAGE_KEY, JSON.stringify(this.dishes));
+        },
         aggiungiQuantita(dish) {
             dish.quantita++;
             localStorage.setItem(STORAGE_KEY, JSON.stringify(this.dishes));
@@ -115,7 +119,7 @@ export default {
                             </div>
                             <div class="col-8" >
                                 <div class="d-flex justify-content-end align-items-center my-3">
-                                    <button class="btn btn-sm btn-danger  text-white fw-semibold mx-2"><i class="fa-solid fa-trash-can"></i></button>
+                                    <button class="btn btn-sm btn-danger  text-white fw-semibold mx-2" @click="ClearItem(dish)"><i class="fa-solid fa-trash-can" title="Elimina"></i></button>
                                 </div>
                             </div>
                         </div>

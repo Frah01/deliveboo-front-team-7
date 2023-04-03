@@ -73,8 +73,8 @@ export default {
             </div>
             <div class="col-9">
                 <input class="search_bar mt-3" type="text" placeholder="cerca il tuo ristorante preferito" v-model="search_title" @keyup="getRestaurants">
-                <div class="col-12 d-flex flex-wrap">
-                    <div class="col-4" v-for="restaurant in filterRestaurants" :key= "restaurant.id" v-if="filterRestaurants.length > 0">
+                <div class="col-12 d-flex flex-wrap justify-content-around">
+                    <div class="col-lg-4 col-md-8 col-sm-12" v-for="restaurant in filterRestaurants" :key= "restaurant.id" v-if="filterRestaurants.length > 0">
                         <CardRistoranti :restaurant="restaurant" :baseUrl="baseUrl"></CardRistoranti>
                     </div>
                     <div v-else>
