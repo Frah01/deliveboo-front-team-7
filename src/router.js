@@ -8,6 +8,7 @@ import Contatti from './pages/Contatti.vue';
 import Collab from './pages/Collab.vue';
 import Dishes from './pages/Dishes.vue';
 import ThankYou from './pages/ThankYou.vue';
+import FormPayments from './pages/FormPayments.vue';
 
 const router = createRouter({
     history: createWebHistory(),
@@ -42,6 +43,12 @@ const router = createRouter({
             name: 'thank-you',
             component: ThankYou,
         },
+        {
+            path: '/form-payments',
+            name: 'form-payments',
+            component: FormPayments,
+        }
+
     ]
 });
 export { router };
