@@ -52,7 +52,7 @@ export default {
             </div>
         </div>
         <div class="row backg-footer">
-            <div class="offset-2 col-8 d-flex my-5 " >
+            <div class="offset-2 col-8 d-flex mt-5 " >
                 <div class="col-3 me-2">
                     <div class="card backg-cards p-4 pb-0 h-100">
                         <ul class="list-unstyled text-white lh-lg">
@@ -133,17 +133,25 @@ export default {
                             </li>
                             <li>
                                 <div class="d-flex flex-wrap mt-3">
-                                    <a class="me-3" href=""><i class="fa-brands fa-facebook fa-2x"></i></a>
-                                    <a class="me-3" href=""><i class="fa-brands fa-twitter fa-2x"></i></a>
-                                    <a class="me-3" href=""><i class="fa-brands fa-instagram fa-2x"></i></a>
+                                    <a href="https://play.google.com/store/apps/details?id=nome-del-tuo-pacchetto%22%3E">
+                                    <img class="img-fluid" alt="Disponibile su Google Play" src="https://play.google.com/intl/en_us/badges/static/images/badges/it_badge_web_generic.png" height="50">
+                                    </a> 
+                                    <a href="https://itunes.apple.com/us/app/nome-della-tua-app/idid-numero-del-tuo-bundle%22%3E">
+                                    <img class="img-fluid" alt="Disponibile su App Store" src="https://linkmaker.itunes.apple.com/assets/shared/badges/it-it/appstore-lrg.svg" height="50">
+                                    </a>
                                 </div>
                             </li>
                         </ul>
                     </div>
+                </div>
+            </div>
+            <div class="offset-2 col-8 my-3" >
+                <a class="me-3" href=""><i class="fa-brands fa-facebook fa-lg"></i></a>
+                <a class="me-3" href=""><i class="fa-brands fa-twitter fa-lg"></i></a>
+                <a class="me-3" href=""><i class="fa-brands fa-instagram fa-lg"></i></a>
             </div>
         </div>
-            </div>
-            
+
     </div>
 </template>
 <style lang="scss" scoped>
