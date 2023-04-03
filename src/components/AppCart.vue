@@ -43,7 +43,7 @@ export default {
                             </li>
                         </ul>
                     <div>
-                        <a href="http://localhost:8000/payment" class="btn btn-sm indietro text-white fw-semibold me-2">Paga</a>
+                        <router-link :to="{ name: 'form-payments'}"  class="btn btn-sm indietro text-white fw-semibold me-2">Paga</router-link>
                         <button type="submit" class="btn btn-sm btn-danger fw-semibold ">Annulla</button>
                     </div>
                     </div>
