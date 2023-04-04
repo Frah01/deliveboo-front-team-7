@@ -72,7 +72,7 @@ export default {
                 <RicercaCat @search="updateCategories"/>
             </div>
             <div class="col-9">
-                <input class="search_bar mt-3" type="text" placeholder="cerca il tuo ristorante preferito" v-model="search_title" @keyup="getRestaurants">
+                <input class="search_bar" type="search" placeholder="Cerca il tuo ristorante preferito.." v-model="search_title" @keyup="getRestaurants">
                 <div class="col-12 d-flex flex-wrap justify-content-around">
                     <div class="col-lg-4 col-md-8 col-sm-12" v-for="restaurant in filterRestaurants" :key= "restaurant.id" v-if="filterRestaurants.length > 0">
                         <CardRistoranti :restaurant="restaurant" :baseUrl="baseUrl"></CardRistoranti>
@@ -109,9 +109,15 @@ export default {
 }
 
 .search_bar {
-    width: 100%;
-    border: 2px solid #00CDBE;
-    border-radius: 20px;
+    width: 50%;
+    display: block;
+    margin: 10px auto;
+    text-align: center;
+    align-self: flex-end;
+    border: 3px solid rgb(68, 0, 99);
+    border-radius: 30px;
+    outline: none;
+    height: 50px;
 
 
 }
