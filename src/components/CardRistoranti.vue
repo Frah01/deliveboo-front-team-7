@@ -24,7 +24,7 @@ export default {
                 </div>
                 <div class="card-body">
                     <h5 class="card-title"><strong>{{ restaurant.nome}}</strong></h5>
-                    <div class="d-flex">
+                    <div class="d-flex flex-wrap">
                         <em><strong>categoria:</strong></em>
                         <span class="badge" v-if="restaurant.categories != ''" v-for="(category, item) in restaurant.categories" :key="item">
                             <span>{{category.nome}}</span>
