@@ -22,7 +22,11 @@ export default {
         Clear(){
             localStorage.clear();
             location.reload();
-        }
+        },
+        ClearItem(dish){
+            dish.quantita = 0;
+            localStorage.setItem(STORAGE_KEY, JSON.stringify(this.dishes));
+        },
     }
 }
 </script>
@@ -39,7 +43,11 @@ export default {
                                 <div v-if="dish.quantita != 0">
                                     <p class="fw-semibold">Nome: <span>{{ dish.nome }}</span></p>
                                     <p class="fw-semibold">Prezzo: <span>{{ dish.prezzo }} &euro;</span></p>
-                                    <p class="fw-semibold">Quantità: <span>{{ dish.quantita }}</span></p>
+                                    <div class="d-flex justify-content-between align-items-center my-3">
+                                        <p class="fw-semibold mb-0">Quantità: <span>{{ dish.quantita }}</span></p>
+                                    <button class="btn btn-sm btn-danger  text-white fw-semibold" @click="ClearItem(dish)"><i class="fa-solid fa-trash-can" title="Elimina"></i></button>
+                                </div>
+                                <hr class="border border-secondary border-1 opacity-75">
                                 </div>
                             </li>
                             <li>
@@ -47,8 +55,8 @@ export default {
                             </li>
                         </ul>
                         <div>
-                            <router-link :to="{ name: 'form-payments'}"  class="btn btn-sm indietro text-white fw-semibold me-2">Paga</router-link>
-                            <button type="submit" class="btn btn-sm btn-danger fw-semibold " @click="Clear()">Svuota</button>
+                            <router-link :to="{ name: 'form-payments'}"  class="btn btn-sm indietro text-white fw-semibold me-2" title="Paga">Paga</router-link>
+                            <button type="submit" class="btn btn-sm btn-danger fw-semibold " @click="Clear()" title="Svuota Carrello">Svuota</button>
                         </div>
                     </div>
                 </div>

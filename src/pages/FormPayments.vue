@@ -16,6 +16,10 @@ export default {
                     this.dishes = storage;
     },
     methods: {
+        ClearItem(dish){
+            dish.quantita = 0;
+            localStorage.setItem(STORAGE_KEY, JSON.stringify(this.dishes));
+        },
         aggiungiQuantita(dish) {
             dish.quantita++;
             localStorage.setItem(STORAGE_KEY, JSON.stringify(this.dishes));
@@ -79,7 +83,8 @@ export default {
                             placeholder="note"></textarea>
                     </div>
                     <div class="form-group mt-2">
-                        <button type="submit" class="btn btn-sm indietro text-white fw-semibold mt-4">Procedi al pagamento</button>
+                        <router-link :to="{ name: 'payment'}"  class="btn btn-sm indietro text-white fw-semibold me-2" title="Paga">Paga</router-link>
+
                     </div>
                 </form>
             </div>  
@@ -115,12 +120,14 @@ export default {
                             </div>
                             <div class="col-8" >
                                 <div class="d-flex justify-content-end align-items-center my-3">
-                                    <button class="btn btn-sm btn-danger  text-white fw-semibold mx-2"><i class="fa-solid fa-trash-can"></i></button>
+                                    <button class="btn btn-sm btn-danger  text-white fw-semibold mx-2" @click="ClearItem(dish)"><i class="fa-solid fa-trash-can" title="Elimina"></i></button>
                                 </div>
                             </div>
                         </div>
+                        <hr class="border border-secondary border-1 opacity-75">
                     </div>
                 </div>
+                <p class="fw-semibold mb-0">Prezzo totale: <span>{{ prezzoTotale() }} &euro;</span></p>
             </div>            
         </div>
     </div>
