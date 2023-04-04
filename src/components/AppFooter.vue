@@ -131,16 +131,6 @@ export default {
                             <li>
                                 <h5>Porta deliveroo con te</h5>
                             </li>
-                            <li>
-                                <div class="d-flex flex-wrap mt-3">
-                                    <a href="https://play.google.com/store/apps/details?id=nome-del-tuo-pacchetto%22%3E">
-                                    <img class="img-fluid" alt="Disponibile su Google Play" src="https://play.google.com/intl/en_us/badges/static/images/badges/it_badge_web_generic.png" height="50">
-                                    </a> 
-                                    <a href="https://itunes.apple.com/us/app/nome-della-tua-app/idid-numero-del-tuo-bundle%22%3E">
-                                    <img class="img-fluid" alt="Disponibile su App Store" src="https://linkmaker.itunes.apple.com/assets/shared/badges/it-it/appstore-lrg.svg" height="50">
-                                    </a>
-                                </div>
-                            </li>
                             <li class="my-3">
                                 <a href="https://play.google.com/store/apps/details?id=com.deliveroo.orderapp&gl=IT">
                                     <img alt="Disponibile su Google Play" src="https://play.google.com/intl/en_us/badges/static/images/badges/it_badge_web_generic.png" height="65"/>
@@ -153,7 +143,7 @@ export default {
                     </div>
                 </div>
             </div>
-            <div class="offset-2 col-8 my-3" >
+            <div class="offset-2 col-8 my-3 icons" >
                 <a class="me-3" href=""><i class="fa-brands fa-facebook fa-lg"></i></a>
                 <a class="me-3" href=""><i class="fa-brands fa-twitter fa-lg"></i></a>
                 <a class="me-3" href=""><i class="fa-brands fa-instagram fa-lg"></i></a>
@@ -237,5 +227,10 @@ export default {
             color:  #00CDBE;
         }
     }
+
+.icons{
+    font-size: 20px;
+    margin-right: 15px;
+}
 
 </style>
