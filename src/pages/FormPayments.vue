@@ -87,6 +87,8 @@ export default {
 
                     </div>
                 </form>
+                    <div id="dropin-container"></div>
+                    <button id="submit-button" class="btn btn-sm indietro fw-semibold text-white">Paga</button>
             </div>  
             <div class="col-4 m-4">
                 <h2 class="text-center">Riepilogo ordine</h2>
