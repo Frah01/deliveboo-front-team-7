@@ -83,7 +83,7 @@ export default {
                             placeholder="note"></textarea>
                     </div>
                     <div class="form-group mt-2">
-                        <router-link :to="{ name: 'payment'}"  class="btn btn-sm indietro text-white fw-semibold me-2" title="Paga">Paga</router-link>
+                        <router-link :to="{ name: 'payment'}"  class="btn btn-sm indietro text-white fw-semibold me-2" title="Paga">Continua</router-link>
 
                     </div>
                 </form>
