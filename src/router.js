@@ -10,6 +10,7 @@ import Dishes from './pages/Dishes.vue';
 import ThankYou from './pages/ThankYou.vue';
 import FormPayments from './pages/FormPayments.vue';
 import Braintree from './pages/Braintree.vue';
+import ThankYouOrder from './pages/ThankYouOrder.vue';
 
 const router = createRouter({
     history: createWebHistory(),
@@ -53,6 +54,11 @@ const router = createRouter({
             path: '/payment',
             name: 'payment',
             component: Braintree,
+        },
+        {
+            path: '/thank-you-order',
+            name: 'thank-you-order',
+            component: ThankYouOrder,
         }
 
     ]

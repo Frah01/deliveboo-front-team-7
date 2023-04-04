@@ -41,7 +41,7 @@ export default {
                         data: { 'paymentMethodNonce': payload.nonce }
                     });
                 });
-                window.location.href = 'https://github.com/Frah01/deliveboo-team-7';
+                
                 this.ClearCache();
             });
         });
@@ -125,7 +125,7 @@ export default {
                 </form>
                 <div id="dropin-container" :class="this.payment ? 'd-block' : 'd-none'"></div>
                 <div class="d-flex">
-                    <button id="submit-button" @click="ClearCache()" :class="this.payment ? 'd-block' : 'd-none'" class="btn btn-sm indietro fw-semibold text-white me-2">Paga</button>
+                    <router-link :to="{ name: 'thank-you-order'}" id="submit-button" @click="ClearCache()" :class="this.payment ? 'd-block' : 'd-none'" class="btn btn-sm indietro fw-semibold text-white me-2">Paga</router-link>
                     <button id="submit-button" @click="goToPayment" :class="this.payment ? 'd-block' : 'd-none'" class="btn btn-sm btn-secondary fw-semibold text-white">Indietro</button>
                 </div>
             </div>  
