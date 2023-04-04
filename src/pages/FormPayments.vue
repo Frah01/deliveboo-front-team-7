@@ -39,26 +39,10 @@ export default {
                         type: 'POST',
                         url: '/checkout',
                         data: { 'paymentMethodNonce': payload.nonce }
-                    }).done(function (result) {
-                        // Tear down the Drop-in UI
-                        instance.teardown(function (teardownErr) {
-                            if (teardownErr) {
-                                console.error('Could not tear down Drop-in UI!');
-                            } else {
-                                console.info('Drop-in UI has been torn down!');
-                                // Remove the 'Submit payment' button
-                                $('#submit-button').remove();
-                            }
-                        });
-
-                        if (result.success) {
-                            $('#checkout-message').html('<h1>Success</h1><p>Your Drop-in UI is working! Check your <a href="https://sandbox.braintreegateway.com/login">sandbox Control Panel</a> for your test transactions.</p><p>Refresh to try another transaction.</p>');
-                        } else {
-                            console.log(result);
-                            $('#checkout-message').html('<h1>Error</h1><p>Check your console.</p>');
-                        }
                     });
                 });
+                window.location.href = 'https://github.com/Frah01/deliveboo-team-7';
+                this.ClearCache();
             });
         });
     },
@@ -86,9 +70,9 @@ export default {
             }
             return total_price;
         },
-        ClearCache(){
+        ClearCache() {
             localStorage.clear();
-            location.reload();
+            // location.reload();
         }
     },
 
