@@ -138,6 +138,14 @@ export default {
                                     <a class="me-3" href=""><i class="fa-brands fa-instagram fa-2x"></i></a>
                                 </div>
                             </li>
+                            <li class="my-3">
+                                <a href="https://play.google.com/store/apps/details?id=com.deliveroo.orderapp&gl=IT">
+                                    <img alt="Disponibile su Google Play" src="https://play.google.com/intl/en_us/badges/static/images/badges/it_badge_web_generic.png" height="65"/>
+                                </a> 
+                                <a href="https://apps.apple.com/GB/app/id1001501844?mt=8">
+                                    <img alt="Disponibile su App Store" src="https://linkmaker.itunes.apple.com/assets/shared/badges/it-it/appstore-lrg.svg" height="50"/>
+                                </a>
+                            </li>
                         </ul>
                     </div>
             </div>
