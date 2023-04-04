@@ -63,24 +63,24 @@ export default {
                             placeholder="Inserisci cognome">
                     </div>
                     <div class="form-group">
-                        <label for="indirizzo" class="control-label fw-semibold mt-3">indirizzo</label>
+                        <label for="indirizzo" class="control-label fw-semibold mt-3">Indirizzo</label>
                         <input type="text" class="form-control" name="indirizzo" id="indirizzo"
                             placeholder="Inserisci indirizzo">
                     </div>
                     <div class="form-group">
-                        <label for="telefono" class="control-label fw-semibold mt-3">telefono</label>
+                        <label for="telefono" class="control-label fw-semibold mt-3">Telefono</label>
                         <input type="phone" class="form-control" name="telefono" id="telefono"
                             placeholder="Inserisci numero di telefono">
                     </div>
                     <div class="form-group">
-                        <label for="email" class="control-label fw-semibold mt-3">email</label>
+                        <label for="email" class="control-label fw-semibold mt-3">Email</label>
                         <input type="mail" class="form-control" name="email" id="email"
                             placeholder="Inserisci mail">
                     </div>
                     <div class="form-group mt-2">
-                        <label for="note" class="control-label fw-semibold mt-3">note</label>
+                        <label for="note" class="control-label fw-semibold mt-3">Note</label>
                         <textarea class="form-control" name="note" id="note"
-                            placeholder="note"></textarea>
+                            placeholder="Note"></textarea>
                     </div>
                     <div class="form-group mt-2">
                         <router-link :to="{ name: 'payment'}"  class="btn btn-sm indietro text-white fw-semibold me-2" title="Paga">Continua</router-link>
