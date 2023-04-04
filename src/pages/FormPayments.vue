@@ -125,7 +125,9 @@ export default {
                             </div>
                         </div>
                     </div>
+                    <hr class="border border-secondary border-1 opacity-75">
                 </div>
+                <p class="fw-semibold mb-0">Prezzo totale: <span>{{ prezzoTotale() }} &euro;</span></p>
             </div>            
         </div>
     </div>
