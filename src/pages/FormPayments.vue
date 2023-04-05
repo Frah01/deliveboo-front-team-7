@@ -39,7 +39,7 @@ export default {
                     $.ajax({
                         type: 'POST',
                         url: '/checkout',
-                        data: { 'paymentMethodNonce': payload.nonce }
+                        data: { 'paymentMethodNonce': payload.nonce },
                     });
                 });
                 
