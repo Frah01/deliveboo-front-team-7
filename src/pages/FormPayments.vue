@@ -9,15 +9,16 @@ export default {
         return {
             store,
             dishes: [],
+            errors: {},
             payment: false,
-            new_order: {
-                nome: '',
-                cognome: '',
-                indirizzo: '',
-                email: '',
-                telefono: '',
-                note: ''
-            }
+           
+            nome: '',
+            cognome: '',
+            indirizzo: '',
+            email: '',
+            telefono: '',
+            note: ''
+            
         }
     },
     mounted() {
@@ -73,7 +74,34 @@ export default {
         ClearCache() {
             localStorage.clear();
             // location.reload();
+        },
+        sendForm(){
+            const data = {
+                    nome: this.nome,
+                    cognome: this.cognome,
+                    indirizzo: this.indirizzo,
+                    email: this.email,
+                    telefono: this.telefono,
+                    note: this.note,
+                }
+            this.errors = {}
+            axios.post(`${this.store.baseUrl}/api/order`, data).then((response) => {
+                    if (!response.data.success) {
+                        this.errors = response.data.errors;
+                       
+                    }
+                    else {
+                        this.nome = '';
+                        this.cognome = '';
+                        this.indirizzo = '';
+                        this.email = '';
+                        this.telefono = '';
+                        this.note = '';
+
+                    }
+                });
         }
+        
     },
 
 }
@@ -85,42 +113,47 @@ export default {
             <div class="col-12">
                 <h2 class="text-center mt-5">Inserisci dati </h2>
             </div>
+      
         </div>
         <div class="row d-flex justify-content-between">
             <div class="col-8 col-md-6 my-2 ">
                 <form @submit.prevent="sendForm" v-if="this.payment == false">
                     <div class="form-group">
                         <label for="nome" class="control-label fw-semibold mt-3">Nome</label>
-                        <input type="text" class="form-control" name="nome" id="nome" v-model="new_order.nome" placeholder="Inserisci nome">
+                        <input type="text" class="form-control" name="nome" id="nome" v-model="nome" placeholder="Inserisci nome">
+                        <div  v-for="(error, index) in errors.nome"
+                                        :key="`message-error-${index}`" class="text-danger">
+                                        {{error}}
+                        </div>
                     </div>
                     
                     <div class="form-group">
                         <label for="cognome" class="control-label fw-semibold mt-3 ">Cognome</label>
-                        <input type="text" class="form-control" name="cognome" id="cognome" v-model="new_order.cognome"
+                        <input type="text" class="form-control" name="cognome" id="cognome" v-model="cognome"
                             placeholder="Inserisci cognome">
                     </div>
                     <div class="form-group">
                         <label for="indirizzo" class="control-label fw-semibold mt-3">Indirizzo</label>
-                        <input type="text" class="form-control" name="indirizzo" id="indirizzo" v-model="new_order.indirizzo"
+                        <input type="text" class="form-control" name="indirizzo" id="indirizzo" v-model="indirizzo"
                             placeholder="Inserisci indirizzo">
                     </div>
                     <div class="form-group">
                         <label for="telefono" class="control-label fw-semibold mt-3">Telefono</label>
-                        <input type="phone" class="form-control" name="telefono" id="telefono" v-model="new_order.telefono"
+                        <input type="phone" class="form-control" name="telefono" id="telefono" v-model="telefono"
                             placeholder="Inserisci numero di telefono">
                     </div>
                     <div class="form-group">
                         <label for="email" class="control-label fw-semibold mt-3">Email</label>
-                        <input type="mail" class="form-control" name="email" id="email" v-model="new_order.email"
+                        <input type="mail" class="form-control" name="email" id="email" v-model="email"
                             placeholder="Inserisci mail">
                     </div>
                     <div class="form-group mt-2">
                         <label for="note" class="control-label fw-semibold mt-3">Note</label>
-                        <textarea class="form-control" name="note" id="note" v-model="new_order.note"
+                        <textarea class="form-control" name="note" id="note" v-model="note"
                             placeholder="Note"></textarea>
                     </div>
                     <div class="form-group mt-2">
-                        <button class="btn btn-sm indietro fw-semibold text-white" @click="goToPayment">Continua</button>
+                        <button type="submit" class="btn btn-sm indietro fw-semibold text-white" @click="goToPayment">Continua</button>
                     </div>
                 </form>
                 <div id="dropin-container" :class="this.payment ? 'd-block' : 'd-none'"></div>
