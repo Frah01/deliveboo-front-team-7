@@ -17,7 +17,7 @@ export default {
             for (let dish in all_dishes) {
                 total_price += all_dishes[dish].prezzo * all_dishes[dish].quantita;
             }
-            return total_price;
+            return total_price.toFixed(2);
         },
         Clear(){
             localStorage.clear();
