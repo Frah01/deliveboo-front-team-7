@@ -3,7 +3,7 @@
 import AppJumbo from '../components/AppJumbo.vue';
 import Recensioni from '../components/Recensioni.vue';
 import ListaRistoranti from '../components/ListaRistoranti.vue';
-import AppFooter from '../components/AppFooter.vue';
+
 
 
 export default {
@@ -12,7 +12,6 @@ export default {
         AppJumbo,
         Recensioni,
         ListaRistoranti,
-        AppFooter,
     }
 }
 </script>
@@ -20,7 +19,6 @@ export default {
     <AppJumbo></AppJumbo>
     <ListaRistoranti></ListaRistoranti>
     <Recensioni></Recensioni>
-    <AppFooter></AppFooter>
 </template>
 <style lang="scss" scoped>
 .main {
