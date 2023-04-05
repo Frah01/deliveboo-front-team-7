@@ -40,27 +40,27 @@ export default {
     },
     methods: {
     slider(){
+        let array = this.reviews.length;
+        setInterval(function() {
+             this.activeItem = (this.activeItem + 1) % array;
+             $(".card-reviews").ready(function(){
+                 $(".img-review").fadeOut(500, ()=>{
+                     $(".img-review").fadeIn(500);
+                 });
+                 $(".nome-review").fadeOut(500, ()=>{
+                     $(".nome-review").fadeIn(500);
+                 });
+                 $(".stars").fadeOut(500, ()=>{
+                     $(".stars").fadeIn(500);
+                 });
+                 $(".descrizione").fadeOut(500, ()=>{
+                     $(".descrizione").fadeIn(500);
+                 })
+             })
+              
+         }, 4000);
         setInterval(() => {
             this.setSlider(this.activeItem == 4 ? 0 : this.activeItem + 1);
-        }, 4000);
-        let array = this.reviews.length;
-       setInterval(function() {
-            this.activeItem = (this.activeItem + 1) % array;
-            $(".card-reviews").ready(function(){
-                $(".img-review").fadeOut(500, ()=>{
-                    $(".img-review").fadeIn(500);
-                });
-                $(".nome-review").fadeOut(500, ()=>{
-                    $(".nome-review").fadeIn(500);
-                });
-                $(".stars").fadeOut(500, ()=>{
-                    $(".stars").fadeIn(500);
-                });
-                $(".descrizione").fadeOut(500, ()=>{
-                    $(".descrizione").fadeIn(500);
-                })
-            })
-             
         }, 4000);
 
         
