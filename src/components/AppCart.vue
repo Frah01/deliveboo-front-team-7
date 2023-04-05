@@ -45,7 +45,7 @@ export default {
                                     <p class="fw-semibold">Prezzo: <span>{{ dish.prezzo }} &euro;</span></p>
                                     <div class="d-flex justify-content-between align-items-center my-3">
                                         <p class="fw-semibold mb-0">Quantità: <span>{{ dish.quantita }}</span></p>
-                                    <button class="btn btn-sm btn-danger  text-white fw-semibold" @click="ClearItem(dish)"><i class="fa-solid fa-trash-can" title="Elimina"></i></button>
+                                    <!-- <button class="btn btn-sm btn-danger  text-white fw-semibold" @click="ClearItem(dish)"><i class="fa-solid fa-trash-can" title="Elimina"></i></button> -->
                                 </div>
                                 <hr class="border border-secondary border-1 opacity-75">
                                 </div>
