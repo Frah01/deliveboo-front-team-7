@@ -45,7 +45,7 @@ export default {
         <div class="row" >
             <h2 class="mt-5 text-center">CARRELLO</h2>
             <div class="col-12">
-                <div class="card p-3 flow shadow custom-border mb-5" >
+                <div class="card p-3 flow shadow custom-border mt-3 mb-5" >
                     <div v-for="dish in dishes">
                         <div class=" mb-3" v-if="dish.quantita != 0">
                             <div>
