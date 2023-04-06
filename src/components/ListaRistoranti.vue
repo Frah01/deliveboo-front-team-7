@@ -122,4 +122,24 @@ export default {
 
 }
 
+@media screen and (max-width: 992px) {
+  .row {
+    display: flex;
+    flex-direction: column;
+    
+  }
+  .col-3{
+    overflow-x: scroll;
+    width: 90%;
+    margin:0 auto;
+  }
+  .col-9{
+    margin:auto
+  }
+  .search_bar{
+    width: 100%;
+  }
+  
+}
+
 </style>
