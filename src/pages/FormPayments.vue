@@ -1,6 +1,7 @@
 <script>
+import axios from 'axios'
 import { store } from '../store.js'
-import AppCart from '../components/AppCart.vue'
+
 const STORAGE_KEY = 'deliveboo-storage-key'
 
 export default {
@@ -11,41 +12,16 @@ export default {
             dishes: [],
             errors: {},
             payment: false,
-           
+
+            //qui di seguito i campi della form da compilare per invio dati utente per l'ordine
             nome: '',
             cognome: '',
             indirizzo: '',
             email: '',
             telefono: '',
             note: ''
-            
+
         }
-    },
-    mounted() {
-        let storage = (JSON.parse(localStorage.getItem(STORAGE_KEY)));
-        this.dishes = storage;
-
-        var button = document.querySelector('#submit-button');
-
-        braintree.dropin.create({
-            // Insert your tokenization key here
-            authorization: 'sandbox_bnfvjc5r_4vgxf5s8m9bsjknm',
-            container: '#dropin-container'
-        }, function (createErr, instance) {
-            button.addEventListener('click', function () {
-                instance.requestPaymentMethod(function (requestPaymentMethodErr, payload) {
-                    // When the user clicks on the 'Submit payment' button this code will send the
-                    // encrypted payment information in a variable called a payment method nonce
-                    $.ajax({
-                        type: 'POST',
-                        url: '/checkout',
-                        data: { 'paymentMethodNonce': payload.nonce },
-                    });
-                });
-                
-                this.ClearCache();
-            });
-        });
     },
     methods: {
         goToPayment() {
@@ -75,35 +51,58 @@ export default {
             localStorage.clear();
             // location.reload();
         },
-        sendForm(){
+        sendForm() {
             const data = {
-                    nome: this.nome,
-                    cognome: this.cognome,
-                    indirizzo: this.indirizzo,
-                    email: this.email,
-                    telefono: this.telefono,
-                    note: this.note,
-                }
+                nome: this.nome,
+                cognome: this.cognome,
+                indirizzo: this.indirizzo,
+                email: this.email,
+                telefono: this.telefono,
+                note: this.note,
+                prezzo_totale: this.prezzoTotale(),
+                pagamento: this.payment
+            }
             this.errors = {}
             axios.post(`${this.store.baseUrl}/api/order`, data).then((response) => {
-                    if (!response.data.success) {
-                        this.errors = response.data.errors;
-                       
+                if (!response.data.success) {
+                    this.errors = response.data.errors;
+                }
+                else {
+                    if (this.payment == false) {
+                        this.payment = !this.payment;
                     }
-                    else {
-                        this.nome = '';
-                        this.cognome = '';
-                        this.indirizzo = '';
-                        this.email = '';
-                        this.telefono = '';
-                        this.note = '';
+                }
+            });
+        },
 
+    },
+    mounted() {
+
+        let storage = (JSON.parse(localStorage.getItem(STORAGE_KEY)));
+        this.dishes = storage;
+
+        var button = document.querySelector('#submit-button');
+
+        braintree.dropin.create({
+            // Insert your tokenization key here
+            authorization: 'sandbox_bnfvjc5r_4vgxf5s8m9bsjknm',
+            container: '#dropin-container'
+        }, function (createErr, instance) {
+            button.addEventListener('click', function () {
+                instance.requestPaymentMethod(function (requestPaymentMethodErr, payload) {
+                    // When the user clicks on the 'Submit payment' button this code will send the
+                    // encrypted payment information in a variable called a payment method nonce
+                    if (payload) {
+                        $.ajax({
+                            type: 'POST',
+                            url: window.location.replace('/thank-you-order'),
+                            data: { 'paymentMethodNonce': payload.nonce }
+                        })
                     }
                 });
-        }
-        
-    },
-
+            });
+        });
+    }
 }
 </script>
 
@@ -121,44 +120,48 @@ export default {
                     <div class="form-group">
                         <label for="nome" class="control-label fw-semibold mt-3">Nome</label>
                         <input type="text" class="form-control" name="nome" id="nome" v-model="nome" placeholder="Inserisci nome">
-                        <div  v-for="(error, index) in errors.nome"
-                                        :key="`message-error-${index}`" class="text-danger">
-                                        {{error}}
+                        <div  v-for="(error, index) in errors.nome" :key="`message-error-${index}`" class="text-danger">
+                            {{error}}
                         </div>
                     </div>
                     
                     <div class="form-group">
                         <label for="cognome" class="control-label fw-semibold mt-3 ">Cognome</label>
-                        <input type="text" class="form-control" name="cognome" id="cognome" v-model="cognome"
-                            placeholder="Inserisci cognome">
+                        <input type="text" class="form-control" name="cognome" id="cognome" v-model="cognome" placeholder="Inserisci cognome">
+                        <div  v-for="(error, index) in errors.cognome" :key="`message-error-${index}`" class="text-danger">
+                            {{error}}
+                        </div>
                     </div>
                     <div class="form-group">
                         <label for="indirizzo" class="control-label fw-semibold mt-3">Indirizzo</label>
-                        <input type="text" class="form-control" name="indirizzo" id="indirizzo" v-model="indirizzo"
-                            placeholder="Inserisci indirizzo">
+                        <input type="text" class="form-control" name="indirizzo" id="indirizzo" v-model="indirizzo" placeholder="Inserisci indirizzo">
+                        <div  v-for="(error, index) in errors.indirizzo" :key="`message-error-${index}`" class="text-danger">
+                            {{error}}
+                        </div>
                     </div>
                     <div class="form-group">
                         <label for="telefono" class="control-label fw-semibold mt-3">Telefono</label>
-                        <input type="phone" class="form-control" name="telefono" id="telefono" v-model="telefono"
-                            placeholder="Inserisci numero di telefono">
+                        <input type="phone" class="form-control" name="telefono" id="telefono" v-model="telefono" placeholder="Inserisci numero di telefono">
                     </div>
                     <div class="form-group">
                         <label for="email" class="control-label fw-semibold mt-3">Email</label>
-                        <input type="mail" class="form-control" name="email" id="email" v-model="email"
-                            placeholder="Inserisci mail">
+                        <input type="mail" class="form-control" name="email" id="email" v-model="email" placeholder="Inserisci mail">
                     </div>
                     <div class="form-group mt-2">
                         <label for="note" class="control-label fw-semibold mt-3">Note</label>
-                        <textarea class="form-control" name="note" id="note" v-model="note"
-                            placeholder="Note"></textarea>
+                        <textarea class="form-control" name="note" id="note" v-model="note" placeholder="Note"></textarea>
                     </div>
                     <div class="form-group mt-2">
-                        <button type="submit" class="btn btn-sm indietro fw-semibold text-white" @click="goToPayment">Continua</button>
+                        <button type="submit" class="btn btn-sm indietro fw-semibold text-white">Continua</button>
                     </div>
                 </form>
                 <div id="dropin-container" :class="this.payment ? 'd-block' : 'd-none'"></div>
                 <div class="d-flex">
-                    <router-link :to="{ name: 'thank-you-order'}" id="submit-button" @click="ClearCache()" :class="this.payment ? 'd-block' : 'd-none'" class="btn btn-sm indietro fw-semibold text-white me-2">Paga</router-link>
+                    <button type="submit" id="submit-button" @click="sendForm" :class="this.payment ? 'd-block' : 'd-none'" class="btn btn-sm indietro fw-semibold text-white me-2">
+                        <!-- <router-link :to="{name: 'thank-you-order'}"> -->
+                            Paga
+                        <!-- </router-link> -->
+                    </button>
                     <button id="submit-button" @click="goToPayment" :class="this.payment ? 'd-block' : 'd-none'" class="btn btn-sm btn-secondary fw-semibold text-white">Indietro</button>
                 </div>
             </div>  

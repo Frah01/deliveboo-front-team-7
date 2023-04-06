@@ -1,7 +1,5 @@
 <script>
 
-
-
 export default {
     data(){
         return{
@@ -17,8 +15,8 @@ export default {
     },
     mounted(){
         this.loader();
+        localStorage.clear();
     }
-
 }
 
 </script>
