@@ -18,6 +18,12 @@
                     },
                 ]
             }
+        },
+        methods: {
+            cartItems(){
+                let cartItems = localStorage.length;
+                return cartItems;
+            }
         }
     };
 </script>
@@ -40,9 +46,10 @@
         <div class="col-md-3 col-lg-2 my-2 contenitore-link">
             <a class="login-button" href="http://localhost:8000/login">Login</a>
             <a class="login-button" href="http://localhost:8000/register">Registrati</a>
-            <a href="">
-                <img src="https://cdn-icons-png.flaticon.com/128/4160/4160115.png" alt="" width="50px" height="50px">
-            </a>
+            <div class="container-cart">
+                <img class="cart" src="https://cdn-icons-png.flaticon.com/128/4160/4160115.png" alt="">
+                <div class="cart-badge">{{ cartItems() }}</div>
+            </div>
         </div>
         </header>
        
@@ -82,10 +89,29 @@
         }
     }
 
-    .dark-mode{
-        background-color: black;
-        color: white;
+    .container-cart{
+        width: 50px;
+        height: 50px;
+        position: relative;
+        .cart{
+            width: 100%;
+    
+        }
+        .cart-badge{
+            position: absolute;
+            top: 10% ;
+            right: 8%;
+            background-color: #e02e2e;
+            border-radius: 10px;
+            font-size: 12px;
+            font-weight: 500;
+            text-align: center;
+            color: rgb(240, 240, 240) ;
+            width: 18px;
+            height: 18px;
+        }
     }
+
 
  }
 
