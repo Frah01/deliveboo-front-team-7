@@ -52,8 +52,8 @@ export default {
             </div>
         </div>
         <div class="row backg-footer">
-            <div class="offset-2 col-8 d-flex mt-5 " >
-                <div class="col-3 me-2">
+            <div class=" col-8 d-flex mt-5 responsive " >
+                <div class="col-lg-3 me-2  col-responsive col-md-5">
                     <div class="card backg-cards p-4 pb-0 h-100">
                         <ul class="list-unstyled text-white lh-lg">
                             <li>
@@ -88,74 +88,77 @@ export default {
                             </li>
                         </ul>
                     </div>
-            </div>
-            <div class="col-3 me-2">
-                <div class="card backg-cards p-4 pb-0 h-100">
-                        <ul class="list-unstyled text-white lh-lg">
-                            <li>
-                                <h5>Note Legali</h5>
-                            </li>
-                            <li>
-                                <a class="text-decoration-none" href="">Termini & Condizioni</a>
-                            </li>
-                            <li>
-                                <a class="text-decoration-none" href="">Informativa sulla privacy</a>
-                            </li>
-                            <li>
-                                <a class="text-decoration-none" href="">Cookies</a>
-                            </li>
-                        </ul>
-                    </div>
-            </div>
-            <div class="col-3 me-2">
-                <div class="card backg-cards p-4 pb-0 h-100">
-                        <ul class="list-unstyled text-white lh-lg">
-                            <li>
-                                <h5>Aiuto</h5>
-                            </li>
-                            <li>
-                                <a class="text-decoration-none" href="">Contatti</a>
-                            </li>
-                            <li>
-                                <a class="text-decoration-none" href="">Faq</a>
-                            </li>
-                            <li>
-                                <a class="text-decoration-none" href="">Tipo di cucina</a>
-                            </li>
-                        </ul>
-                    </div>
-            </div>
-            <div class="col-3">
+                </div>
+                <div class="col-lg-3 me-2  col-responsive col-md-5">
                     <div class="card backg-cards p-4 pb-0 h-100">
-                        <ul class="list-unstyled text-white lh-lg">
-                            <li>
-                                <h5>Porta deliveroo con te</h5>
-                            </li>
-                            <li class="my-3">
-                                <a href="https://play.google.com/store/apps/details?id=com.deliveroo.orderapp&gl=IT">
-                                    <img alt="Disponibile su Google Play" src="https://play.google.com/intl/en_us/badges/static/images/badges/it_badge_web_generic.png" height="65"/>
-                                </a> 
-                                <a href="https://apps.apple.com/GB/app/id1001501844?mt=8">
-                                    <img alt="Disponibile su App Store" src="https://linkmaker.itunes.apple.com/assets/shared/badges/it-it/appstore-lrg.svg" height="50"/>
-                                </a>
-                            </li>
-                        </ul>
+                            <ul class="list-unstyled text-white lh-lg">
+                                <li>
+                                    <h5>Note Legali</h5>
+                                </li>
+                                <li>
+                                    <a class="text-decoration-none" href="">Termini & Condizioni</a>
+                                </li>
+                                <li>
+                                    <a class="text-decoration-none" href="">Informativa sulla privacy</a>
+                                </li>
+                                <li>
+                                    <a class="text-decoration-none" href="">Cookies</a>
+                                </li>
+                            </ul>
                     </div>
                 </div>
+                <div class="col-lg-3 me-2  col-responsive col-md-5">
+                    <div class="card backg-cards p-4 pb-0 h-100">
+                            <ul class="list-unstyled text-white lh-lg">
+                                <li>
+                                    <h5>Aiuto</h5>
+                                </li>
+                                <li>
+                                    <a class="text-decoration-none" href="">Contatti</a>
+                                </li>
+                                <li>
+                                    <a class="text-decoration-none" href="">Faq</a>
+                                </li>
+                                <li>
+                                    <a class="text-decoration-none" href="">Tipo di cucina</a>
+                                </li>
+                            </ul>
+                    </div>
+                </div>
+                <div class="col-lg-3 me-2 responsive col-responsive col-md-5">
+                        <div class="card backg-cards p-4 pb-0 h-100">
+                            <ul class="list-unstyled text-white lh-lg">
+                                <li>
+                                    <h5>Porta deliveroo con te</h5>
+                                </li>
+                                <li class="my-3">
+                                    <a href="https://play.google.com/store/apps/details?id=com.deliveroo.orderapp&gl=IT">
+                                        <img alt="Disponibile su Google Play" src="https://play.google.com/intl/en_us/badges/static/images/badges/it_badge_web_generic.png" height="65"/>
+                                    </a> 
+                                    <a href="https://apps.apple.com/GB/app/id1001501844?mt=8">
+                                        <img alt="Disponibile su App Store" src="https://linkmaker.itunes.apple.com/assets/shared/badges/it-it/appstore-lrg.svg" height="50"/>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                </div>
+                
             </div>
-            <div class="offset-2 col-8 my-3 icons" >
+            <div class="col-8 icons" >
                 <a class="me-3" href=""><i class="fa-brands fa-facebook fa-lg"></i></a>
                 <a class="me-3" href=""><i class="fa-brands fa-twitter fa-lg"></i></a>
                 <a class="me-3" href=""><i class="fa-brands fa-instagram fa-lg"></i></a>
             </div>
         </div>
-
     </div>
 </template>
 <style lang="scss" scoped>
     .backg-footer{
-    background-color: rgba(46,51,51,255)
+    background-color: rgba(46,51,51,255);
         
+    }
+    .responsive{
+        margin: 0 auto;
     }
     .backg-cards{
         background-color: rgba(67,72,72,255);
@@ -180,6 +183,7 @@ export default {
     height: 200px;
   }
 }
+
 
 .one {
   background-image: url('public/giuseppe-deliveboo.jpg');
@@ -230,7 +234,43 @@ export default {
 
 .icons{
     font-size: 20px;
-    margin-right: 15px;
+    margin: 20px auto;
+    padding: 0 10px;
 }
 
+@media screen and (max-width: 766px) {
+   .responsive{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin: 0 auto;
+    
+   }
+   .col-3{
+    margin-bottom: 1rem;
+   }
+  .card{
+    width: 250px;
+    text-align: center;
+    
+   
+  }
+  .icons{
+    margin: 0 0 10% 20%
+  }
+    }
+    @media screen and (max-width: 992px) and (min-width: 767px) {
+        .responsive{
+        display: flex;
+        flex-wrap: wrap;
+        margin: auto;
+       justify-content: center;
+   } 
+   .col-responsive{
+    margin: 10px;
+   }
+   .icons{
+    margin: 0 0 0 22%
+  }
+    }
 </style>
