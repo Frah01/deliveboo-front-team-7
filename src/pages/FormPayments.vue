@@ -3,6 +3,7 @@ import axios from 'axios'
 import { store } from '../store.js'
 
 const STORAGE_KEY = 'deliveboo-storage-key'
+const PAID = 'deliveboo-paid'
 
 export default {
     name: 'form-payments',
@@ -19,7 +20,8 @@ export default {
             indirizzo: '',
             email: '',
             telefono: '',
-            note: ''
+            note: '',
+            restaurant_id: ''
 
         }
     },
@@ -60,9 +62,15 @@ export default {
                 telefono: this.telefono,
                 note: this.note,
                 prezzo_totale: this.prezzoTotale(),
+                ristorante: this.restaurant_id,
+                loading: this.store.loading,
                 pagamento: this.payment
             }
+
+            localStorage.setItem(PAID, JSON.stringify(data));
+
             this.errors = {}
+
             axios.post(`${this.store.baseUrl}/api/order`, data).then((response) => {
                 if (!response.data.success) {
                     this.errors = response.data.errors;
@@ -81,6 +89,11 @@ export default {
         let storage = (JSON.parse(localStorage.getItem(STORAGE_KEY)));
         this.dishes = storage;
 
+        //recupero l'id del ristorante per inviarlo tramite la form
+        for (let index in this.dishes) {
+            this.restaurant_id = this.dishes[index].restaurant_id;
+        }
+
         var button = document.querySelector('#submit-button');
 
         braintree.dropin.create({
@@ -93,11 +106,22 @@ export default {
                     // When the user clicks on the 'Submit payment' button this code will send the
                     // encrypted payment information in a variable called a payment method nonce
                     if (payload) {
+
+                        store.loading = true;
+                        let data = (JSON.parse(localStorage.getItem(PAID)));
+
+                        $.ajax({
+                            type: 'POST',
+                            url: store.baseUrl + '/api/order',
+                            data: data
+                        })
+
                         $.ajax({
                             type: 'POST',
                             url: window.location.replace('/thank-you-order'),
                             data: { 'paymentMethodNonce': payload.nonce }
                         })
+
                     }
                 });
             });
@@ -157,12 +181,12 @@ export default {
                 </form>
                 <div id="dropin-container" :class="this.payment ? 'd-block' : 'd-none'"></div>
                 <div class="d-flex">
-                    <button type="submit" id="submit-button" @click="sendForm" :class="this.payment ? 'd-block' : 'd-none'" class="btn btn-sm indietro fw-semibold text-white me-2">
-                        <!-- <router-link :to="{name: 'thank-you-order'}"> -->
-                            Paga
-                        <!-- </router-link> -->
+                    <button type="submit" id="submit-button" :class="this.payment ? 'd-block' : 'd-none'" class="btn btn-sm btn-secondary indietro fw-semibold text-white me-2" :disabled="this.store.loading">
+                        Paga
                     </button>
-                    <button id="submit-button" @click="goToPayment" :class="this.payment ? 'd-block' : 'd-none'" class="btn btn-sm btn-secondary fw-semibold text-white">Indietro</button>
+                    <button id="submit-button" @click="goToPayment" :class="this.payment ? 'd-block' : 'd-none'" class="btn btn-sm btn-secondary fw-semibold text-white" :disabled="this.store.loading">
+                        Indietro
+                    </button>
                 </div>
             </div>  
             <div class="col-4 m-4">
@@ -214,8 +238,7 @@ export default {
 </template>
 
 <style lang="scss" scoped>
-
-.flow{
+.flow {
     height: 50vh;
     overflow-y: auto;
 }
