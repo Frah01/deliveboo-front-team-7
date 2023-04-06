@@ -8,10 +8,18 @@ export default {
         return {
             store,
             categories: '',
-            selected_categories: []
+            selected_categories: [],
+            window:{
+                width: 0,
+                height: 0
+            }
         }
     },
     methods: {
+        handleResize() {
+            this.window.width = window.innerWidth;
+            this.window.height = window.innerHeight;
+        },
         getCategories() {
             axios.get(`${this.store.baseUrl}/api/categories`).then((response) => {
 
@@ -34,6 +42,10 @@ export default {
     mounted() {
         this.getCategories();
     },
+    created() {
+        window.addEventListener('resize', this.handleResize);
+        this.handleResize();
+    },
 
 
 }
@@ -41,16 +53,31 @@ export default {
 </script>
 <template lang="">
 
+    <div v-if="this.window.width > 800">
         <div class="container-fluid backg-color">
             <h2 class="titolo text-center mt-2">Categorie</h2>
-            <div v-for="category in this.categories" :key="category.id" class="badge-div">
-                <button type="button" 
-                        class="my-2 mx-1  badge btn btn-secondary"
+                <div v-for="category in this.categories" :key="category.id" class="badge-div">
+                    <button type="button" 
+                        class="my-2 mx-1  badge "
                         :class="category.attivo ? 'cate-attiva' : ''"
                         @click="sendCategory(category.id)">{{category.nome}}
-                </button>
+                    </button>
+                </div>
+        </div>
+    </div>
+        <div v-if="this.window.width < 800">
+            <div class="container-fluid backg-color d-flex">
+                <div v-for="category in this.categories" :key="category.id" class="badge-div">
+                    <button type="button" 
+                            class="my-2 badge  "
+                            :class="category.attivo ? 'cate-attiva' : ''"
+                            @click="sendCategory(category.id)">{{category.nome}}
+                    </button>
+                </div>
             </div>
         </div>
+            
+    
    
 </template>
 
@@ -90,5 +117,21 @@ export default {
     color: rgb(68, 0, 99);
     margin-bottom: 30px;
     font-style: italic;
+}
+@media screen and (min-width: 800px) and (max-width: 992px) {
+  .backg-color {
+    display: flex;
+    
+  
+  }
+  .badge-div{
+    margin-left:10px;
+    width: 50%;
+  }
+
+  .titolo{
+    display: none;
+  }
+  
 }
 </style>
