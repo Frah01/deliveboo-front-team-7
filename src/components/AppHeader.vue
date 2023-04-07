@@ -1,32 +1,33 @@
 <script>
-    export default {
-        name: 'AppHeader',
-        data() {
-            return {
-                menuItems: [
-                    {
-                        label: 'Chi Siamo',
-                        routeName: 'chi-siamo',
-                    },
-                    {
-                        label: 'Contatti',
-                        routeName: 'contatti',
-                    },
-                    {
-                        label: 'Lavora con noi',
-                        routeName: 'collab',
-                    },
-                ]
-            }
-        },
-        methods: {
-            cartItems(){
-                let cartItems = localStorage.length;
-                return cartItems;
-            }
+import { store } from '../store';
+const STORAGE_KEY = 'deliveboo-storage-key'
+const QTA_ITEMS = 'qta-storage-items'
+
+export default {
+    name: 'AppHeader',
+    data() {
+        return {
+            store,
+            menuItems: [
+                {
+                    label: 'Chi Siamo',
+                    routeName: 'chi-siamo',
+                },
+                {
+                    label: 'Contatti',
+                    routeName: 'contatti',
+                },
+                {
+                    label: 'Lavora con noi',
+                    routeName: 'collab',
+                },
+            ],
+            qta_items: 0
         }
-    };
+    }
+};
 </script>
+
 <template lang="">
     <!-- <header>
         <nav class="navbar navbar-expand-md navbar-expand-lg sticky-top p-2 shadow deliveboo-navbar d-flex justify-content-between">
@@ -35,6 +36,7 @@
                     <router-link :to="{ name: 'homepage'}" >
                         <img src="https://smallprintpizza.com.au/wp-content/uploads/deliveroo-logo.png" alt="logo deliveboo">
                     </router-link>
+
                 </div>
             </div>
             <div class="">
@@ -93,7 +95,7 @@
                                 <a class="nav-link dropdown-toggle login-button menu" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"> Menù </a>
                                 <div class="container-cart">
                                     <img class="cart" src="https://cdn-icons-png.flaticon.com/128/4160/4160115.png" alt="">
-                                    <div class="cart-badge">{{ cartItems() }}</div>
+                                    <div class="cart-badge">{{ store.qta_items }}</div>
                                 </div>
                                 <ul class="dropdown-menu dropdown-bg">
                                     <a class="dropdown-item login-button" href="http://localhost:8000/login">Login</a>
@@ -113,13 +115,15 @@
         </nav>
     </header>
        
-
 </template>
+
 <style lang="scss">
+
     .deliveboo-navbar {
         background-color: #00CDBE;
         width: 100%;
         height: 10vh;
+
 
     .container-logo {
         width: 250px;
@@ -146,6 +150,17 @@
             .links-dropdown{
                 display: none;
             }
+        .login-button {
+        font-weight: 600;
+        font-size: 17px;
+        text-decoration: none;
+        color: white;
+        margin-right: 20px;
+        transition: color 0.5s;
+
+        &:hover,
+        &:active {
+            color: rgb(68, 0, 99) !important;
         }
         
         text-align: right;
@@ -252,4 +267,31 @@
     
  }
 
+    .container-cart {
+        width: 50px;
+        height: 50px;
+        position: relative;
+
+        .cart {
+            width: 100%;
+
+        }
+
+        .cart-badge {
+            position: absolute;
+            top: 10%;
+            right: 8%;
+            background-color: #e02e2e;
+            border-radius: 10px;
+            font-size: 12px;
+            font-weight: 500;
+            text-align: center;
+            color: rgb(240, 240, 240);
+            width: 18px;
+            height: 18px;
+        }
+    }
+
+
+}
 </style>
