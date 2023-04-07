@@ -139,7 +139,7 @@ export default {
       
         </div>
         <div class="row d-flex justify-content-between">
-            <div class="col-8 col-md-6 my-2 ">
+            <div class="col-lg-8 col-md-12 my-2 ">
                 <form @submit.prevent="sendForm" v-if="this.payment == false">
                     <div class="form-group">
                         <label for="nome" class="control-label fw-semibold mt-3">Nome</label>
@@ -189,7 +189,7 @@ export default {
                     </button>
                 </div>
             </div>  
-            <div class="col-4 m-4">
+            <div class="col-lg-4 col-md-12 my-sm-5">
                 <div class="flow card shadow p-3" >
                     <div v-for="dish in dishes">
                         <div class="mb-3" v-if="dish.quantita != 0">
@@ -230,7 +230,6 @@ export default {
                         </div>
                     </div>
                     <p class="fw-semibold mb-0">Prezzo totale: <span>{{ prezzoTotale() }} &euro;</span></p>
-
                 </div>
             </div>            
         </div>

@@ -159,7 +159,7 @@ export default {
 
 <style lang="scss" scoped>
 .flow {
-    height: 60vh;
+    height: 400px;
     overflow-y: auto;
 }
 
@@ -167,9 +167,9 @@ export default {
     overflow: hidden;
 }
 .empty-cart-img {
-    width: 100%;
-    height: 50vh;
-    scale: 2.5;
+  width: 100%;
+  height: 350px;
+  scale: 1.5;
 }
 
 .bg-header{
