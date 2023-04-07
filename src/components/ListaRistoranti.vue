@@ -74,11 +74,12 @@ export default {
             <div class="col-9">
                 <input class="search_bar" type="search" placeholder="Cerca il tuo ristorante preferito.." v-model="search_title" @keyup="getRestaurants">
                 <div class="col-12 d-flex flex-wrap justify-content-around">
-                    <div class="responsive-card col-lg-5 col-xl-4 col-sm-12 col-xs-12" v-for="restaurant in filterRestaurants" :key= "restaurant.id" v-if="filterRestaurants.length > 0">
+                    <div class="responsive-card col-md-6 col-lg-5 col-xl-4 col-sm-12 col-xs-12" v-for="restaurant in filterRestaurants" :key= "restaurant.id" v-if="filterRestaurants.length > 0">
                         <CardRistoranti :restaurant="restaurant" :baseUrl="baseUrl"></CardRistoranti>
                     </div>
                     <div v-else>
                         <p class="risposta"> Ci spiace, sembra che non ci sia nessun ristorante con le caratteristiche da te richieste, prova con un'altra ricerca!</p>
+                        <img class="img-sad" src="https://tse2.mm.bing.net/th?id=OIP.JxVWzszKA0iv5HmXXAmuPgHaHa&pid=Api" alt="">
                     </div>
                 </div>
             </div>
@@ -125,9 +126,17 @@ export default {
 .risposta{
     font-size: 20px;
     color: rgb(68, 0, 99) ;
-    margin: 100px 50px;
+    margin: 100px 50px 50px 50px;
     text-align: center;
     font-weight: 600;
+}
+
+.img-sad{
+    display: flex;
+    justify-content: center;
+    margin: 0 auto;
+    width: 200px;
+    height: 200px;
 }
 
 @media screen and (max-width: 992px) {
