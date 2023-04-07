@@ -83,9 +83,9 @@ export default {
                 <div class="card-header bg-header" >
                     <h2 class="text-center text-white mb-0">Carrello</h2>
                 </div>
-                <div class="card-body" >
+                <div class="card-body shadow" >
                     <div class="col-12">
-                        <div class="card p-3 flow border-0 mt-3" >
+                        <div class="card  p-3 flow border-0 mt-3" >
                             <div v-for="dish in dishes">
                                 <div class=" mb-3" v-if="dish.quantita != 0">
                                     <div>
