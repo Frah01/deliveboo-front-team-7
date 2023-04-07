@@ -4,6 +4,7 @@ import { store } from '../store.js'
 
 const STORAGE_KEY = 'deliveboo-storage-key'
 const PAID = 'deliveboo-paid'
+const QTA_ITEMS = 'qta-storage-items'
 
 export default {
     name: 'form-payments',
@@ -83,6 +84,20 @@ export default {
             });
         },
 
+    },
+    updated() {
+
+        let qta_items = 0;
+        store.cart_off_canvas = [];
+
+        for (let index in this.dishes) {
+            store.cart_off_canvas.push(this.dishes[index]);
+            if (this.dishes[index].quantita > 0)
+                qta_items++;
+        }
+
+        localStorage.setItem(QTA_ITEMS, qta_items);
+        store.qta_items = localStorage.getItem(QTA_ITEMS);
     },
     mounted() {
 
@@ -170,7 +185,10 @@ export default {
                         <textarea class="form-control" name="note" id="note" v-model="note" placeholder="Note"></textarea>
                     </div>
                     <div class="form-group mt-2">
-                        <button type="submit" class="btn btn-sm indietro fw-semibold text-white">Continua</button>
+                        <button type="submit" class="btn btn-sm btn-secondary indietro fw-semibold text-white me-2" :disabled="this.prezzoTotale() == 0">Continua</button>
+                        <router-link :to="{ name: 'dishes', params: { slug: store.slug_restaurant }}">
+                            <button type="submit" class="btn btn-sm bg-secondary fw-semibold text-white">Indietro</button>
+                        </router-link>
                     </div>
                 </form>
                 <div class="card" :class="this.payment ? 'd-block' : 'd-none'">
@@ -196,47 +214,54 @@ export default {
                         <h2 class=" text-center text-white m-0">Riepilogo Ordine</h2>
                     </div>
                     <div class="flow shadow p-3" >
-                        <div v-for="dish in dishes">
-                            <div class="mb-3" v-if="dish.quantita != 0">
-                                <div>
-                                    <div class="row g-0">
-                                        <div class="col-md-4">
-                                            <div v-if="dish.immagine.includes('dish_image')">
-                                                    <img class="card-img-top rounded shadow" :src="`${store.baseUrl}/storage/${dish.immagine}`">
+                        <div v-if="prezzoTotale() != 0">
+                            <div v-for="dish in dishes">
+                                <div class="mb-3" v-if="dish.quantita != 0">
+                                    <div>
+                                        <div class="row g-0">
+                                            <div class="col-md-4">
+                                                <div v-if="dish.immagine.includes('dish_image')">
+                                                        <img class="card-img-top rounded shadow" :src="`${store.baseUrl}/storage/${dish.immagine}`">
+                                                </div>
+                                                <div v-else>
+                                                    <img class="card-img-top rounded shadow" :src="dish.immagine != null ? `${dish.immagine}`: 'https://artsmidnorthcoast.com/wp-content/uploads/2014/05/no-image-available-icon-6.png'" alt="">
+                                                </div>
                                             </div>
-                                            <div v-else>
-                                                <img class="card-img-top rounded shadow" :src="dish.immagine != null ? `${dish.immagine}`: 'https://artsmidnorthcoast.com/wp-content/uploads/2014/05/no-image-available-icon-6.png'" alt="">
-                                            </div>
-                                        </div>
-                                        <div class="col-md-8">
-                                            <div class="card-body p-3">
-                                                <p class="fw-semibold "><span>{{ dish.nome }}</span></p>
-                                                <p class="fw-semibold mb-0">Prezzo: <span>{{ dish.prezzo }} &euro;</span><span v-if="this.payment">  x {{ dish.quantita }}</span></p>
-                                                
+                                            <div class="col-md-8">
+                                                <div class="card-body p-3">
+                                                    <p class="fw-semibold "><span>{{ dish.nome }}</span></p>
+                                                    <p class="fw-semibold mb-0">Prezzo: <span>{{ dish.prezzo }} &euro;</span><span v-if="this.payment">  x {{ dish.quantita }}</span></p>
+                                                    
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
+                                    <div class="row" v-if="this.payment == false">
+                                        <div class="col-4" >
+                                            <div class="d-flex justify-content-between align-items-center my-3" >
+                                                <button class="btn btn-sm indietro text-white fw-semibold" :disabled="dish.quantita == 0" @click="togliQuantita(dish)"><i class="fa-solid fa-minus"></i></button>
+                                                <span class="fw-semibold">{{ dish.quantita }}</span>
+                                                <button class="btn btn-sm indietro text-white fw-semibold" @click="aggiungiQuantita(dish)"><i class="fa-solid fa-plus"></i></button>
+                                            </div>
+                                        </div>
+                                        <div class="col-8" >
+                                            <div class="d-flex justify-content-end align-items-center my-3">
+                                                <button class="btn btn-sm btn-danger  text-white fw-semibold mx-2" @click="ClearItem(dish)"><i class="fa-solid fa-trash-can" title="Elimina"></i></button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <hr class="border border-secondary border-1 opacity-75">
                                 </div>
-                                <div class="row" v-if="this.payment == false">
-                                    <div class="col-4" >
-                                        <div class="d-flex justify-content-between align-items-center my-3" >
-                                            <button class="btn btn-sm indietro text-white fw-semibold" :disabled="dish.quantita == 0" @click="togliQuantita(dish)"><i class="fa-solid fa-minus"></i></button>
-                                            <span class="fw-semibold">{{ dish.quantita }}</span>
-                                            <button class="btn btn-sm indietro text-white fw-semibold" @click="aggiungiQuantita(dish)"><i class="fa-solid fa-plus"></i></button>
-                                        </div>
-                                    </div>
-                                    <div class="col-8" >
-                                        <div class="d-flex justify-content-end align-items-center my-3">
-                                            <button class="btn btn-sm btn-danger  text-white fw-semibold mx-2" @click="ClearItem(dish)"><i class="fa-solid fa-trash-can" title="Elimina"></i></button>
-                                        </div>
-                                    </div>
-                                </div>
-                                <hr class="border border-secondary border-1 opacity-75">
+                            </div>
+                            <div class="card-footer backg-body" >
+                                <p class="fw-semibold mb-0">Prezzo totale: <span>{{ prezzoTotale() }} &euro;</span></p>
                             </div>
                         </div>
-                    </div>
-                    <div class="card-footer backg-body" >
-                        <p class="fw-semibold mb-0">Prezzo totale: <span>{{ prezzoTotale() }} &euro;</span></p>
+                        <div v-else>
+                            <div class="img-container">
+                                <img class="object-fit-contain empty-cart-img"  src="../../public/empty-cart.png" alt="">
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>            
@@ -250,7 +275,7 @@ export default {
     overflow-y: auto;
 }
 
-.bg-header{
+.bg-header {
     background-color: #00CDBE;
 }
 
@@ -258,4 +283,13 @@ export default {
     background-color: rgba(209, 235, 153, 0.25);
 }
 
+.img-container {
+    overflow: hidden;
+}
+
+.empty-cart-img {
+    width: 100%;
+    height: 350px;
+    scale: 1.5;
+}
 </style>

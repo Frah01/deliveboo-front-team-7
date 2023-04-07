@@ -3,7 +3,8 @@ import axios from 'axios';
 import { store } from '../store.js'
 import AppCart from '../components/AppCart.vue';
 
-const STORAGE_KEY = 'deliveboo-storage-key'
+const STORAGE_KEY = 'deliveboo-storage-key';
+const SLUG_RESTAURANT = 'slug-restaurant';
 const STORAGE_RESTAURANT_ID = 'storage-restaurant-id';
 const CURRENT_RESTAURANT_ID = 'current-restaurant-id';
 
@@ -20,7 +21,13 @@ export default {
             storage_restaurant_id: '',
         }
     },
+    created() {
+        this.handleScroll();
+    },
     mounted() {
+        localStorage.setItem(SLUG_RESTAURANT, this.$route.params.slug);
+        store.slug_restaurant = localStorage.getItem(SLUG_RESTAURANT);
+
         axios.get(`${store.baseUrl}/api/restaurants/${this.$route.params.slug}`).then((response) => {
             if (response.data.success) {
                 if (window.localStorage.length == 0) {
@@ -62,7 +69,10 @@ export default {
         togliQuantita(dish) {
             dish.quantita--;
             localStorage.setItem(STORAGE_KEY, JSON.stringify(this.dishes));
-        }
+        },
+        handleScroll() {
+            window.scrollTo(0, 0);
+        },
     },
 }
 </script>
@@ -157,16 +167,15 @@ button[disabled] {
     background-color: rgb(85, 72, 72);
 }
 
-.font-dish-cards{
+.font-dish-cards {
     font-size: 12px;
 }
 
-.bg-header{
+.bg-header {
     background-color: #00CDBE;
 }
 
-.backg-body{
+.backg-body {
     background-color: rgba(209, 235, 153, 0.25);
 }
-
 </style>
