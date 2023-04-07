@@ -24,7 +24,21 @@ export default {
             ],
             qta_items: 0
         }
-    }
+    },
+    methods: {
+        prezzoTotale() {
+            let total_price = 0;
+            let all_dishes = store.cart_off_canvas;
+            for (let dish in all_dishes) {
+                total_price += all_dishes[dish].prezzo * all_dishes[dish].quantita;
+            }
+            return total_price.toFixed(2);
+        },
+        Clear() {
+            localStorage.clear();
+            location.reload();
+        },
+    },
 };
 </script>
 
@@ -76,90 +90,138 @@ export default {
         </nav>
     </header>
     <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel">
-                                        <div class="offcanvas-header">
-                                            <h5 class="offcanvas-title" id="offcanvasRightLabel">Offcanvas right</h5>
-                                            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-                                        </div>
-                                        <div class="offcanvas-body">
-                                            ...
-                                        </div>
+        <div class="offcanvas-header">
+            <h3 class="offcanvas-title" id="offcanvasRightLabel">Il tuo carrello</h3>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+        </div>
+        <div class="offcanvas-body d-flex flex-column justify-content-between">
+            <div class="overflow-y-auto" v-if="store.cart_off_canvas.length != 0">
+                <div v-for="dish in store.cart_off_canvas">
+                    <div class=" mb-3" v-if="dish.quantita != 0">
+                        <div>
+                            <div class="row g-0">
+                                <div class="col-4">
+                                    <div v-if="dish.immagine.includes('dish_image')">
+                                            <img class="card-img-top rounded shadow" :src="`${store.baseUrl}/storage/${dish.immagine}`">
+                                    </div>
+                                    <div v-else>
+                                        <img class="card-img-top rounded shadow" :src="dish.immagine != null ? `${dish.immagine}`: 'https://artsmidnorthcoast.com/wp-content/uploads/2014/05/no-image-available-icon-6.png'" alt="">
+                                    </div>
+                                </div>
+                                <div class="col-8">
+                                    <div class="card-body p-3 ">
+                                        <p class="fw-semibold "><span>{{ dish.nome }}</span></p>
+                                        <p class="fw-semibold">Prezzo: <span>{{ dish.prezzo }} &euro;</span></p>
+                                        <p class="fw-semibold mb-0">Quantita: <span>{{ dish.quantita }} </span></p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div v-if="store.cart_off_canvas.length == 0">
+                <img class="object-fit-contain empty-cart-img w-100"  src="../../public/empty-cart.png" alt="">
+            </div>
+            <div v-else>
+                <div class="card-footer backg-body" v-if="this.prezzoTotale() != 0">
+                    <div class="d-flex justify-content-between align-items-center" >
+                        <div>
+                            <router-link :to="{ name: 'form-payments'}">
+                                <button class="btn btn-sm indietro text-white fw-semibold me-2" data-bs-dismiss="offcanvas">Paga</button>
+                            </router-link>
+                            <!-- <router-link :to="{ name: 'form-payments'}"  class="btn btn-sm indietro text-white fw-semibold me-2" title="Paga">Paga</router-link> -->
+                            <button type="submit" class="btn btn-sm btn-danger fw-semibold "  @click="Clear()" title="Svuota Carrello">Svuota</button>
+                        </div>
+                        <div>
+                            <p class="fw-semibold mb-0">Prezzo totale: <span>{{ prezzoTotale() }} &euro;</span></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
        
 </template>
 
 <style lang="scss">
-
 .deliveboo-navbar {
     background-color: #00CDBE;
     width: 100%;
     height: 10vh;
 
 
-        .container-logo {
-            width: 250px;
-            height: 70%;
+    .container-logo {
+        width: 250px;
+        height: 70%;
 
-            .logo-small{
-                    display: none;
-            }
-            .logo-img {
-                width: 100%;
-                overflow-y: hidden;
-                color: white;
-                padding-left: 20px;
-            }
-
+        .logo-small {
+            display: none;
         }
 
-    .container-links{
+        .logo-img {
+            width: 100%;
+            overflow-y: hidden;
+            color: white;
+            padding-left: 20px;
+        }
 
-        .dropdown-bg{
-            background-color:#00CDBE ;
-            border: 2px solid #D0EB99 ;
+    }
 
-            .links-dropdown{
+    .container-links {
+
+        .dropdown-bg {
+            background-color: #00CDBE;
+            border: 2px solid #D0EB99;
+
+            .links-dropdown {
                 display: none;
             }
-            
-            
-            
+
+
+
         }
-        .login-button{
+
+        .login-button {
             font-weight: 600;
             font-size: 17px;
             text-decoration: none;
             color: white;
             margin-right: 20px;
             transition: color 0.5s;
-        
+
             &:hover,
             &:active {
-                    color: rgb(68, 0, 99) !important;
+                color: rgb(68, 0, 99) !important;
             }
         }
-        .menu{
+
+        .menu {
             display: none;
         }
-        .container-cart{
+
+        .container-cart {
             width: 50px;
             height: 50px;
             padding: 0;
             margin: 0;
             position: relative;
-            .cart{
+
+            .cart {
                 width: 100%;
-        
+
             }
-            .cart-badge{
+
+            .cart-badge {
                 position: absolute;
-                top: 10% ;
+                top: 10%;
                 right: 8%;
                 background-color: #e02e2e;
                 border-radius: 10px;
                 font-size: 12px;
                 font-weight: 500;
                 text-align: center;
-                color: rgb(240, 240, 240) ;
+                color: rgb(240, 240, 240);
                 width: 18px;
                 height: 18px;
             }
@@ -169,55 +231,59 @@ export default {
 
 }
 
- @media screen and (max-width:1000px) {
+@media screen and (max-width:1000px) {
 
-.deliveboo-navbar{
-    height: 100%;
+    .deliveboo-navbar {
+        height: 100%;
 
-    .container-logo{
-        width: 150px;
-            
-        .logo-img{
-            display: none;
-        }
+        .container-logo {
+            width: 150px;
 
-        .logo-small{
-            display: block;
-            width: 90%;
-            height: 90px;
-            overflow-y: hidden;
-            color: white;
-        }
-    }
-    .container-links{
-            
-        .container-lista{
-            height: 40px;
-                
-            .dropdown-bg{
-                position: absolute;
-                top: 90%;
-                left: -30%;
-                .links-dropdown{
-                    display: block;
-                }
-            }
-            .links{
+            .logo-img {
                 display: none;
             }
-            .accedi{
-                display:none;
-            }
 
-            .menu{
+            .logo-small {
                 display: block;
+                width: 90%;
+                height: 90px;
+                overflow-y: hidden;
+                color: white;
             }
-
         }
-    }
 
-    
- }
+        .container-links {
+
+            .container-lista {
+                height: 40px;
+
+                .dropdown-bg {
+                    position: absolute;
+                    top: 90%;
+                    left: -30%;
+
+                    .links-dropdown {
+                        display: block;
+                    }
+                }
+
+                .links {
+                    display: none;
+                }
+
+                .accedi {
+                    display: none;
+                }
+
+                .menu {
+                    display: block;
+                }
+
+            }
+        }
+
+
+    }
 
 
 }
