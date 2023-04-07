@@ -78,7 +78,7 @@ export default {
                         <CardRistoranti :restaurant="restaurant" :baseUrl="baseUrl"></CardRistoranti>
                     </div>
                     <div v-else>
-                        <p>NESSUN RISTORANTE TROVATO</p>
+                        <p class="risposta"> Ci spiace, sembra che non ci sia nessun ristorante con le caratteristiche da te richieste, prova con un'altra ricerca!</p>
                     </div>
                 </div>
             </div>
@@ -120,6 +120,14 @@ export default {
     height: 50px;
 
 
+}
+
+.risposta{
+    font-size: 20px;
+    color: rgb(68, 0, 99) ;
+    margin: 100px 50px;
+    text-align: center;
+    font-weight: 600;
 }
 
 @media screen and (max-width: 992px) {
