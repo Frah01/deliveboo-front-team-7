@@ -82,7 +82,7 @@ export default {
                         <span class="navbar-toggler-icon text-light"></span>
                     </button> -->
                     <div class=" container-links" id="navbarSupportedContent">
-                        <ul class="navbar-nav container-lista">
+                        <ul class="navbar-nav container-lista d-flex">
                             <li class="nav-item links"  v-for="(item,index) in menuItems" :key="index">
                                 <router-link :to="{ name: item.routeName}" class="nav-link login-button">
                                 {{ item.label }}
@@ -119,27 +119,27 @@ export default {
 
 <style lang="scss">
 
-    .deliveboo-navbar {
-        background-color: #00CDBE;
-        width: 100%;
-        height: 10vh;
+.deliveboo-navbar {
+    background-color: #00CDBE;
+    width: 100%;
+    height: 10vh;
 
 
-    .container-logo {
-        width: 250px;
-        height: 70%;
+        .container-logo {
+            width: 250px;
+            height: 70%;
 
-        .logo-small{
-                display: none;
+            .logo-small{
+                    display: none;
+            }
+            .logo-img {
+                width: 100%;
+                overflow-y: hidden;
+                color: white;
+                padding-left: 20px;
+            }
+
         }
-        .logo-img {
-            width: 100%;
-            overflow-y: hidden;
-            color: white;
-            padding-left: 20px;
-        }
-
-    }
 
     .container-links{
 
@@ -150,110 +150,89 @@ export default {
             .links-dropdown{
                 display: none;
             }
-        .login-button {
-        font-weight: 600;
-        font-size: 17px;
-        text-decoration: none;
-        color: white;
-        margin-right: 20px;
-        transition: color 0.5s;
-
-        &:hover,
-        &:active {
-            color: rgb(68, 0, 99) !important;
+            
+            
+            
         }
+        .login-button{
+            font-weight: 600;
+            font-size: 17px;
+            text-decoration: none;
+            color: white;
+            margin-right: 20px;
+            transition: color 0.5s;
         
-        text-align: right;
-            .login-button{
-                font-weight: 600;
-                font-size: 17px;
-                text-decoration: none;
-                color: white;
-                margin-right: 20px;
-                transition: color 0.5s;
-            
-                &:hover,
-                &:active {
-                        color: rgb(68, 0, 99) !important;
-                }
+            &:hover,
+            &:active {
+                    color: rgb(68, 0, 99) !important;
             }
+        }
+        .menu{
+            display: none;
+        }
+        .container-cart{
+            width: 50px;
+            height: 50px;
+            position: relative;
+            .cart{
+                width: 100%;
+        
+            }
+            .cart-badge{
+                position: absolute;
+                top: 10% ;
+                right: 8%;
+                background-color: #e02e2e;
+                border-radius: 10px;
+                font-size: 12px;
+                font-weight: 500;
+                text-align: center;
+                color: rgb(240, 240, 240) ;
+                width: 18px;
+                height: 18px;
+            }
+        }
 
-            .menu{
-                display: none;
-            }
-        
-            .container-cart{
-                width: 50px;
-                height: 50px;
-                position: relative;
-                .cart{
-                    width: 100%;
-            
-                }
-                .cart-badge{
-                    position: absolute;
-                    top: 10% ;
-                    right: 8%;
-                    background-color: #e02e2e;
-                    border-radius: 10px;
-                    font-size: 12px;
-                    font-weight: 500;
-                    text-align: center;
-                    color: rgb(240, 240, 240) ;
-                    width: 18px;
-                    height: 18px;
-                }
-            }
     }
 
-
-
- }
+}
 
  @media screen and (max-width:1000px) {
 
-    .deliveboo-navbar{
-        height: 100%;
+.deliveboo-navbar{
+    height: 100%;
 
-        .container-logo{
-            width: 150px;
+    .container-logo{
+        width: 150px;
             
-            .logo-img{
-                display: none;
-            }
-
-            .logo-small{
-                display: block;
-                width: 90%;
-                height: 90px;
-                overflow-y: hidden;
-                color: white;
-            }
+        .logo-img{
+            display: none;
         }
-        .container-links{
-            
-            .container-lista{
-                height: 40px;
-                
-                .dropdown-bg{
-                    position: absolute;
-                    top: 90%;
-                    left: -30%;
-                }
-                .links{
-                    display: none;
-                }
 
+        .logo-small{
+            display: block;
+            width: 90%;
+            height: 90px;
+            overflow-y: hidden;
+            color: white;
+        }
+    }
+    .container-links{
+            
+        .container-lista{
+            height: 40px;
+                
+            .dropdown-bg{
+                position: absolute;
+                top: 90%;
+                left: -30%;
                 .links-dropdown{
                     display: block;
                 }
-
-                .cart{
-                    width: 45px;
-                    height: 45px;
-                }
             }
-
+            .links{
+                display: none;
+            }
             .accedi{
                 display:none;
             }
@@ -261,36 +240,12 @@ export default {
             .menu{
                 display: block;
             }
+
         }
     }
 
     
  }
-
-    .container-cart {
-        width: 50px;
-        height: 50px;
-        position: relative;
-
-        .cart {
-            width: 100%;
-
-        }
-
-        .cart-badge {
-            position: absolute;
-            top: 10%;
-            right: 8%;
-            background-color: #e02e2e;
-            border-radius: 10px;
-            font-size: 12px;
-            font-weight: 500;
-            text-align: center;
-            color: rgb(240, 240, 240);
-            width: 18px;
-            height: 18px;
-        }
-    }
 
 
 }
