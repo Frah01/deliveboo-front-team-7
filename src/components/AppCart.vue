@@ -24,9 +24,14 @@ export default {
 
         this.storage = (JSON.parse(localStorage.getItem(STORAGE_KEY)));
 
+
+        store.cart_off_canvas = [];
+
         for (let index in this.storage) {
             localStorage.setItem(STORAGE_RESTAURANT_ID, this.storage[index].restaurant_id);
             this.storage_restaurant_id = localStorage.getItem(STORAGE_RESTAURANT_ID);
+            store.cart_off_canvas.push(this.storage[index]);
+
         }
 
         for (let index in this.dishes) {
@@ -42,6 +47,7 @@ export default {
 
         localStorage.setItem(QTA_ITEMS, qta_items);
         store.qta_items = localStorage.getItem(QTA_ITEMS);
+
     },
     methods: {
         prezzoTotale() {
