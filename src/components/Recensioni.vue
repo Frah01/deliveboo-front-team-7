@@ -80,7 +80,7 @@ export default {
     <div class="contenitore-reviews">
         <div class="row-review">
             <h1>Noi ci mettiamo tutto il nostro impegno! Leggi cosa dicono di noi i nostri clienti!</h1>
-            <div class="col-12 card-reviews" data-random="0" data-speed="4000" data-interval="151">
+            <div class="col-12 col-sm-3 card-reviews" data-random="0" data-speed="4000" data-interval="151">
                 <div class="img-review" >
                     <img :src="reviews[this.activeItem].foto" alt="">
                 </div>
@@ -190,5 +190,36 @@ export default {
             }
         }
     }
+    @media screen and (min-width: 800px) and (max-width: 992px) {
+        .card-reviews{
+            padding-bottom: 3rem;
+            
+        }
+        .circles-container{
+            padding-top: 5rem;
+        }
+    }
     
+    @media screen and (max-width: 766px) {
+        .card-reviews{
+            padding-bottom: 3rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            margin: 0 auto;
+            
+            .descrizione{
+                width: 300px;
+            }
+          
+            .circles-container{
+            padding-top: 5rem;
+        }
+        .img-review{
+            margin-right: 2rem;
+        }
+            
+        }
+    }
 </style>
