@@ -68,7 +68,7 @@ export default {
 <template lang="">
     <div class="container-fluid my-5">
         <div class="row d-flex">
-            <div class="col-3">
+            <div class="col-3 p-0">
                 <RicercaCat @search="updateCategories"/>
             </div>
             <div class="col-9">

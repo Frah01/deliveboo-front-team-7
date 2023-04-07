@@ -118,10 +118,10 @@ export default {
     margin-bottom: 30px;
     font-style: italic;
 }
-@media screen and (min-width: 800px) and (max-width: 992px) {
+@media screen and (max-width: 992px) {
   .backg-color {
     display: flex;
-    
+    padding: 0;
   
   }
   .badge-div{
