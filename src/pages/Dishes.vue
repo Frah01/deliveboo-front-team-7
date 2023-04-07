@@ -67,35 +67,41 @@ export default {
 }
 </script>
 <template lang="">
-    <div class="container" >
-        <div class="row" >
-            <div class="col-8 " >
-                <h2 class="mt-5 text-center">MENU'</h2>
-                <div class=" d-flex justify-content-center flex-wrap">
-                    <div class="my-3 mx-2 d-flex " v-for="(dish, index) in this.dishes" :key="index">
-                        <div class="card  shadow" style="width: 14rem;">
-                            <div  v-if="dish.immagine.includes('dish_image')">
-                                <img class="card-img-top img-height " :src="`${store.baseUrl}/storage/${dish.immagine}`">
-                            </div>
-                            <div class="position-relative" v-else>
-                                <p class="text-center fw-semibold position-badge badge back-badge shadow">{{ dish.prezzo }}&euro;</p>
-                                <img class="card-img-top img-height" :src="dish.immagine != null ? `${dish.immagine}`: 'https://artsmidnorthcoast.com/wp-content/uploads/2014/05/no-image-available-icon-6.png'" alt="">
-                            </div>
-                            <div class="p-3">
-                                <p class="fw-semibold text-center">{{ dish.nome }}</p>
-                                <p class="text-center"><span class="fw-semibold">Ingredienti:</span> <span class="fst-italic">{{ dish.ingredienti }}</span></p>
-                                <div v-if="dish.disponibile == false">
-                                    <span class="badge-disponibile"> Prodotto Terminato! </span>
-                                </div>
-                                <div class="d-flex justify-content-around align-items-center" v-if="dish.disponibile == true">
-                                    <button class="btn btn-sm indietro text-white fw-semibold mx-2 aggiungi-carrello-fs" :disabled="this.current_restaurant_id != this.storage_restaurant_id && this.storage_restaurant_id != ''" @click="aggiungiQuantita(dish)"><i class="fa-solid fa-lg fa-cart-plus me-2"></i>Aggiungi al carrello</button>
+    <div class="container-fluid">
+        <div class="row mx-5">
+            <div class="col-lg-8 col-sm-12 col-md-12" >
+                <div class="card shadow my-5 mx-5 ">
+                    <div class="card-header bg-header">
+                        <h2 class=" text-center text-white m-0">Il nostro men&ugrave;</h2>
+                    </div>
+                    <div class="card-body" >
+                        <div class=" d-flex justify-content-center flex-wrap">
+                            <div class="my-3 mx-2 d-flex " v-for="(dish, index) in this.dishes" :key="index">
+                                <div class="card backg-body shadow" style="width: 14rem;">
+                                    <div  v-if="dish.immagine.includes('dish_image')">
+                                        <img class="card-img-top img-height " :src="`${store.baseUrl}/storage/${dish.immagine}`">
+                                    </div>
+                                    <div class="position-relative" v-else>
+                                        <p class="text-center fw-semibold position-badge badge back-badge shadow">{{ dish.prezzo }}&euro;</p>
+                                        <img class="card-img-top img-height" :src="dish.immagine != null ? `${dish.immagine}`: 'https://artsmidnorthcoast.com/wp-content/uploads/2014/05/no-image-available-icon-6.png'" alt="">
+                                    </div>
+                                    <div class="p-3 h-100 d-flex flex-column justify-content-between">
+                                        <p class="fw-semibold text-center">{{ dish.nome }}</p>
+                                        <p class="text-center font-dish-cards"><span class="fw-semibold">Ingredienti:</span> <span class="fst-italic ">{{ dish.ingredienti }}</span></p>
+                                        <div v-if="dish.disponibile == false">
+                                            <span class="badge-disponibile"> Prodotto Terminato! </span>
+                                        </div>
+                                        <div class="d-flex justify-content-around" v-if="dish.disponibile == true">
+                                            <button class="btn btn-sm indietro text-white fw-semibold mx-2 aggiungi-carrello-fs" :disabled="this.current_restaurant_id != this.storage_restaurant_id && this.storage_restaurant_id != ''" @click="aggiungiQuantita(dish)"><i class="fa-solid fa-lg fa-cart-plus me-2"></i>Aggiungi al carrello</button>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="col-4 " >
+            <div class="col-lg-4 col-sm-12 col-md-12" >
                 <AppCart :dishes="this.dishes"/>
             </div>
         </div>
@@ -150,4 +156,17 @@ button[disabled] {
     border: 1px solid #999999;
     background-color: rgb(85, 72, 72);
 }
+
+.font-dish-cards{
+    font-size: 12px;
+}
+
+.bg-header{
+    background-color: #00CDBE;
+}
+
+.backg-body{
+    background-color: rgba(209, 235, 153, 0.25);
+}
+
 </style>
