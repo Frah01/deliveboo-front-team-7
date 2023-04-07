@@ -12,6 +12,9 @@ export default {
     components: {
         AppCart
     },
+    props: {
+        restaurant: Object,
+    },
     data() {
         return {
             store,
@@ -19,6 +22,7 @@ export default {
             storage: '',
             current_restaurant_id: '',
             storage_restaurant_id: '',
+            restaurant: '',
         }
     },
     created() {
@@ -32,11 +36,14 @@ export default {
             if (response.data.success) {
                 if (window.localStorage.length == 0) {
                     this.dishes = response.data.results;
+                    this.restaurant = response.data.restaurant;
+                    console.log(this.restaurant)
                     this.loading = false;
                 }
                 else {
                     let storage = (JSON.parse(localStorage.getItem(STORAGE_KEY)));
                     this.dishes = response.data.results;
+                    this.restaurant = response.data.restaurant;
                     this.loading = false;
 
                     for (let i in storage) {
@@ -75,12 +82,39 @@ export default {
         },
     },
 }
+
 </script>
 <template lang="">
     <div class="container-fluid">
-        <div class="row mx-5">
+        <div class="row mt-4" >
+            <div class="offset-lg-3 col-lg-6 offset-2 col-8 d-flex justify-content-center justify-content-lg-end">
+                <router-link :to="{ name : 'homepage'}" class="btn btn-sm indietro text-white fw-semibold" ><i class="fa-solid fa-arrow-left me-2"></i>Torna alla Homepage</router-link>
+            </div>
+        </div>
+        <div class="row my-5 mx-5" >
+            <div class="col-lg-6 col-md-12" >
+                <div class="d-flex justify-content-lg-end justify-content-sm-center">
+                    <div>
+                        <img class="rounded img-fluid shadow" :src="restaurant.immagine != null ? `${restaurant.immagine}`: 'https://artsmidnorthcoast.com/wp-content/uploads/2014/05/no-image-available-icon-6.png'" :alt="restaurant.nome">   
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6 col-md-12" >
+                <div class="card border-0 text-sm-center text-lg-start" >
+                    <div class="card-body">
+                        <h3 class="card-title mb-3 viola">{{ this.restaurant.nome }}</h3>
+                        <p><i class="fa-solid fa-location-dot me-2 fa-lg viola"></i>{{restaurant.indirizzo}}</p>
+                        <p><i class="fa-solid fa-phone me-2 fa-lg viola"></i>{{restaurant.telefono}}</p>
+                        <p><i class="fa-regular fa-envelope me-2 fa-lg viola"></i>{{restaurant.email}}</p>
+                        <p><i class="fa-solid fa-industry me-2 fa-lg viola"></i>{{restaurant.partita_iva}}</p>
+                    </div> 
+                </div>
+            </div>
+        </div>
+        <hr class="border border-secondary border-1 opacity-75">
+        <div class="row mx-lg-5">
             <div class="col-lg-8 col-sm-12 col-md-12" >
-                <div class="card shadow my-5 mx-5 ">
+                <div class="card shadow mx-5 ">
                     <div class="card-header bg-header">
                         <h2 class=" text-center text-white m-0">Il nostro men&ugrave;</h2>
                     </div>
@@ -119,6 +153,11 @@ export default {
 </template>
 
 <style lang="scss" scoped>
+
+.viola{
+    color: rgb(68, 0, 99);;
+}
+
 .badge-disponibile {
     position: absolute;
     bottom: 65%;

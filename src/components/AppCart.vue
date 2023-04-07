@@ -85,7 +85,7 @@ export default {
 <template lang="">
     <div class="container" >
         <div class="row" >
-            <div class="card my-5 shadow px-0" >
+            <div class="card mb-5 mt-sm-5 mt-lg-0 shadow px-0" >
                 <div class="card-header bg-header" >
                     <h2 class="text-center text-white mb-0">Carrello</h2>
                 </div>
