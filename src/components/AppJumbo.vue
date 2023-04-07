@@ -60,7 +60,7 @@ export default {
 
 <style lang="scss">
 
-    .jumbotron-deliveroo {
+.jumbotron-deliveroo {
     width: 100%;
     height: 850px;
     background-image: url('https://images8.alphacoders.com/942/thumb-1920-942495.jpg');
@@ -145,6 +145,35 @@ export default {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+}
+
+
+@media screen and (max-width: 580px){
+
+.jumbotron-deliveroo{
+    height: 650px;
+    .title-jumbo {
+        width: 100%;
+        color: white;
+        justify-content: center;
+        text-align: center;
+
+        h1 {
+            font-size: 20px;
+            padding: 30px;
+            font-style: italic;
+
+        }
+
+        strong {
+            color: #00CDBE;
+        }
+    }
+
+    .slider{
+        display: none;
+    }
+}
 }
 
 
