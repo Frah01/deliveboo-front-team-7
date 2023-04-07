@@ -82,13 +82,13 @@ export default {
                         <span class="navbar-toggler-icon text-light"></span>
                     </button> -->
                     <div class=" container-links" id="navbarSupportedContent">
-                        <ul class="navbar-nav container-lista d-flex">
+                        <ul class="navbar-nav container-lista d-flex align-items-center">
                             <li class="nav-item links"  v-for="(item,index) in menuItems" :key="index">
                                 <router-link :to="{ name: item.routeName}" class="nav-link login-button">
                                 {{ item.label }}
                                 </router-link>
                             </li>
-                            <li class="nav-item dropdown d-flex ">
+                            <li class="nav-item dropdown d-flex align-items-center">
                                 <a class="nav-link dropdown-toggle login-button accedi" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                                     Accedi
                                 </a>
