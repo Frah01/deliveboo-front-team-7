@@ -76,6 +76,11 @@ export default {
 </script>
 <template lang="">
     <div class="container-fluid">
+        <div class="row mt-4" >
+            <div class="offset-lg-3 col-lg-6 offset-2 col-8 d-flex justify-content-center justify-content-lg-end">
+                <router-link :to="{ name : 'homepage'}" class="btn btn-sm indietro text-white fw-semibold" ><i class="fa-solid fa-arrow-left me-2"></i>Torna alla Homepage</router-link>
+            </div>
+        </div>
         <div class="row my-5 mx-5" >
             <div class="col-lg-6 col-md-12" >
                 <div class="d-flex justify-content-lg-end justify-content-sm-center">
