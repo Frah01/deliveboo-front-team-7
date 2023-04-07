@@ -133,9 +133,14 @@ export default {
                                     <img class="object-fit-contain empty-cart-img"  src="../../public/empty-cart.png" alt="">
                                 </div>
                                 <div v-else>
-                                    <p>Vuoi iniziare con un nuovo ordine?</p>
-                                    <button class="btn btn-sm indietro text-white fw-semibold me-2" @click="nuovoOrdine">Si</button>
-                                    <button class="btn btn-sm btn-danger text-white fw-semibold">No</button>
+                                    <h3 class="text-center mt-5">Vuoi creare un nuovo carrello?</h3>
+                                    <p class="p-2 text-center">Puoi scegliere se cancellare l'ordine precedente oppure procedere col pagamento</p>
+                                    <div class="d-flex justify-content-around">
+                                        <button class="btn btn-sm bg-secondary text-white fw-semibold me-2" @click="nuovoOrdine">Nuovo carrello</button>
+                                        <router-link :to="{ name: 'form-payments'}">
+                                            <button class="btn btn-sm indietro text-white fw-semibold" @click="goToPayment">Vai al pagamento</button>
+                                        </router-link>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -163,20 +168,21 @@ export default {
     overflow-y: auto;
 }
 
-.img-container{
+.img-container {
     overflow: hidden;
 }
+
 .empty-cart-img {
-  width: 100%;
-  height: 350px;
-  scale: 1.5;
+    width: 100%;
+    height: 350px;
+    scale: 1.5;
 }
 
-.bg-header{
+.bg-header {
     background-color: #00CDBE;
 }
-.backg-body{
+
+.backg-body {
     background-color: rgba(209, 235, 153, 0.25);
 }
-
 </style>
