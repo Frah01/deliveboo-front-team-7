@@ -39,10 +39,10 @@ export default {
 <style lang="scss" scoped>
 
 .card-restaurant{
-    width: 95%;
+    width: 400px;
     height: 385px;
     border-radius: 20px;
-    margin: 20px 0 ;
+    margin: 20px auto ;
     box-shadow: 2px 2px 10px 2px #D0EB99;
     .h-200 {
         height: 200px;
@@ -94,5 +94,50 @@ export default {
         }
     }
 
+}
+
+@media screen and (max-width:1700px){
+    .card-restaurant{
+        width: 320px;
+    }
+}
+
+@media screen and (max-width:1390px){
+    .card-restaurant{
+        width: 280px;
+    }
+}
+
+@media screen and (max-width:1200px){
+    .card-restaurant{
+        width: 320px;
+    }
+}
+
+@media screen and (max-width:952px){
+    .card-restaurant{
+        width: 250px;
+    }
+}
+
+@media screen and (max-width:767px){
+    .card-restaurant{
+        width: 470px;
+    }
+}
+@media screen and (max-width:692px){
+    .card-restaurant{
+        width: 350px;
+    }
+}
+@media screen and (max-width:530px){
+    .card-restaurant{
+        width: 250px;
+    }
+}
+@media screen and (max-width:400px){
+    .card-restaurant{
+        width: 200px;
+    }
 }
 </style>
