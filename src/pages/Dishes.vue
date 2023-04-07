@@ -4,6 +4,8 @@ import { store } from '../store.js'
 import AppCart from '../components/AppCart.vue';
 
 const STORAGE_KEY = 'deliveboo-storage-key'
+const STORAGE_RESTAURANT_ID = 'storage-restaurant-id';
+const CURRENT_RESTAURANT_ID = 'current-restaurant-id';
 
 export default {
     components: {
@@ -12,7 +14,10 @@ export default {
     data() {
         return {
             store,
-            dishes: []
+            dishes: [],
+            storage: '',
+            current_restaurant_id: '',
+            storage_restaurant_id: '',
         }
     },
     mounted() {
@@ -35,6 +40,19 @@ export default {
                 }
             }
         })
+    },
+    updated() {
+        this.storage = (JSON.parse(localStorage.getItem(STORAGE_KEY)));
+
+        for (let index in this.storage) {
+            localStorage.setItem(STORAGE_RESTAURANT_ID, this.storage[index].restaurant_id);
+            this.storage_restaurant_id = localStorage.getItem(STORAGE_RESTAURANT_ID);
+        }
+
+        for (let index in this.dishes) {
+            localStorage.setItem(CURRENT_RESTAURANT_ID, this.dishes[index].restaurant_id);
+            this.current_restaurant_id = localStorage.getItem(CURRENT_RESTAURANT_ID);
+        }
     },
     methods: {
         aggiungiQuantita(dish) {
@@ -70,7 +88,7 @@ export default {
                                     <span class="badge-disponibile"> Prodotto Terminato! </span>
                                 </div>
                                 <div class="d-flex justify-content-around align-items-center" v-if="dish.disponibile == true">
-                                    <button class="btn btn-sm indietro text-white fw-semibold mx-2 aggiungi-carrello-fs" @click="aggiungiQuantita(dish)"><i class="fa-solid fa-lg fa-cart-plus me-2"></i>Aggiungi al carrello</button>
+                                    <button class="btn btn-sm indietro text-white fw-semibold mx-2 aggiungi-carrello-fs" :disabled="this.current_restaurant_id != this.storage_restaurant_id && this.storage_restaurant_id != ''" @click="aggiungiQuantita(dish)"><i class="fa-solid fa-lg fa-cart-plus me-2"></i>Aggiungi al carrello</button>
                                 </div>
                             </div>
                         </div>
@@ -85,7 +103,6 @@ export default {
 </template>
 
 <style lang="scss" scoped>
-
 .badge-disponibile {
     position: absolute;
     bottom: 65%;
@@ -100,29 +117,37 @@ export default {
     margin: 0 auto;
     padding: 10px;
 }
-    .flow{
+
+.flow {
     height: 50vh;
     overflow-y: auto;
 }
 
-.img-height{
+.img-height {
     height: 150px;
     object-fit: cover;
 }
 
-.aggiungi-carrello-fs{
+.aggiungi-carrello-fs {
     font-size: 10px;
 }
 
-.back-badge{
-    background-color: rgb(61, 146, 4);;
+.back-badge {
+    background-color: rgb(61, 146, 4);
+    ;
 }
 
-.position-badge{
+.position-badge {
     position: absolute;
     bottom: -10px;
     right: 10px;
     margin-bottom: 0;
     font-size: 14px;
+}
+
+button:disabled,
+button[disabled] {
+    border: 1px solid #999999;
+    background-color: rgb(85, 72, 72);
 }
 </style>

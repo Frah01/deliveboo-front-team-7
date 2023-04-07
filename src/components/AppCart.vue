@@ -1,6 +1,11 @@
 <script>
 import { store } from '../store';
 const STORAGE_KEY = 'deliveboo-storage-key'
+const STORAGE_RESTAURANT_ID = 'storage-restaurant-id';
+const CURRENT_RESTAURANT_ID = 'current-restaurant-id';
+const QTA_ITEMS = 'qta-storage-items'
+
+
 export default {
     name: "AppCart",
     props: {
@@ -9,7 +14,34 @@ export default {
     data() {
         return {
             store,
+            storage: '',
+            current_restaurant_id: '',
+            storage_restaurant_id: '',
         };
+    },
+    updated() {
+        let qta_items = 0;
+
+        this.storage = (JSON.parse(localStorage.getItem(STORAGE_KEY)));
+
+        for (let index in this.storage) {
+            localStorage.setItem(STORAGE_RESTAURANT_ID, this.storage[index].restaurant_id);
+            this.storage_restaurant_id = localStorage.getItem(STORAGE_RESTAURANT_ID);
+        }
+
+        for (let index in this.dishes) {
+            localStorage.setItem(CURRENT_RESTAURANT_ID, this.dishes[index].restaurant_id);
+            this.current_restaurant_id = localStorage.getItem(CURRENT_RESTAURANT_ID);
+
+        }
+
+        for (let index in this.storage) {
+            if (this.storage[index].quantita > 0)
+                qta_items++;
+        }
+
+        localStorage.setItem(QTA_ITEMS, qta_items);
+        store.qta_items = localStorage.getItem(QTA_ITEMS);
     },
     methods: {
         prezzoTotale() {
@@ -20,11 +52,11 @@ export default {
             }
             return total_price.toFixed(2);
         },
-        Clear(){
+        Clear() {
             localStorage.clear();
             location.reload();
         },
-        ClearItem(dish){
+        ClearItem(dish) {
             dish.quantita = 0;
             localStorage.setItem(STORAGE_KEY, JSON.stringify(this.dishes));
         },
@@ -36,6 +68,10 @@ export default {
             dish.quantita--;
             localStorage.setItem(STORAGE_KEY, JSON.stringify(this.dishes));
         },
+        nuovoOrdine() {
+            localStorage.clear();
+            location.reload();
+        }
     }
 }
 </script>
@@ -83,12 +119,19 @@ export default {
                             <hr class="border border-secondary border-1 opacity-75">
                         </div>
                     </div>
-                    <div v-if="this.prezzoTotale() != 0" >
-                        <p class="fw-semibold mb-0">Prezzo totale: <span>{{ prezzoTotale() }} &euro;</span></p>
+                    <div v-if="this.current_restaurant_id == this.storage_restaurant_id">
+                        <div v-if="this.prezzoTotale() != 0" >
+                            <p class="fw-semibold mb-0">Prezzo totale: <span>{{ prezzoTotale() }} &euro;</span></p>
+                        </div>
                     </div>
                     <div v-else>
-                        <div >
+                        <div v-if="!this.storage">
                             <img class="object-fit-contain empty-cart-img"  src="../../public/empty-cart.png" alt="">
+                        </div>
+                        <div v-else>
+                            <p>Vuoi iniziare con un nuovo ordine?</p>
+                            <button class="btn btn-sm indietro text-white fw-semibold me-2" @click="nuovoOrdine">Si</button>
+                            <button class="btn btn-sm btn-danger text-white fw-semibold">No</button>
                         </div>
                     </div>
                 </div>
@@ -102,13 +145,12 @@ export default {
 </template>
 
 <style lang="scss" scoped>
-
-.flow{
+.flow {
     height: 50vh;
     overflow-y: auto;
 }
 
-.empty-cart-img{
+.empty-cart-img {
     width: 100%;
     height: 45vh;
 }
