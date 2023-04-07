@@ -9,48 +9,44 @@ export default {
             <h2 class="fw-semibold text-center my-3 py-3 text-white">Team 7 - Classe 82</h2>
             <p class="text-center p-1 text-white sottotitolo">Ciao a tutti! Questa è la sezione dedicata al nostro team! Sotto tutte le foto potrete trovare i nostri link ai profili LinkedIn e GitHub, dove potrete visionare tutti gli altri nostri progetti</p>
         </div>
-        <div class="row">
-            <div class="d-flex justify content-center py-3 px-0">
-                <div class="col-3 d-flex justify-content-center">
-                    <div class="css-border user one">
+        <div class="container-fluid">
+            <div class=" row  py-3 px-0 team">
+                <div class="col-lg-3 col-md-6 col-sm-12  fst-italic  text-white ">
+                    <div class="css-border user one mb-5"></div>
+                    <div class="text"><h3>Giuseppe Maisto</h3></div>
+                    <div class="social text-center">
+                        <p class="text-break "><a href="https://www.linkedin.com/in/giuseppe-maisto-129299238/" class="m-3"><i class="fa-brands fa-linkedin fa-bounce fa-xl" style="color: #ffffff;"></i></a>
+                       <a href="https://github.com/giuseppemaisto" class="m-3"><i class="fa-brands fa-github fa-bounce fa-xl" style="color: #ffffff;"></i></a></p>
+                    </div>
+
+                </div>
+                <div class="col-lg-3 col-md-6 col-sm-12  fst-italic text-center text-white">
+                    <div class="css-border user two mb-5"></div>
+                    <h3>Alessia Menon</h3>
+                    <div class="social text-center">
+                        <p class="text-break "><a href="https://www.linkedin.com/in/alessia-menon/"  class="m-3"><i class="fa-brands fa-linkedin fa-bounce fa-xl" style="color: #ffffff;"></i></a>
+                        <a href="https://github.com/alessiam1909" class="m-3"><i class="fa-brands fa-github fa-bounce fa-xl" style="color: #ffffff;"></i></a></p>
                     </div>
                 </div>
-                <div class="col-3 d-flex justify-content-center">
-                    <div class="css-border user two">
+                <div class="col-lg-3  col-md-6 col-sm-12  fst-italic text-center text-white">
+                    <div class="css-border user three mb-5"></div>
+                    <h3>Davide Rossi</h3>
+                    <div class="social text-center">
+                        <p class="text-break "><a href="https://www.linkedin.com/in/davide-rossi-95b478214/"  class="m-3"><i class="fa-brands fa-linkedin fa-bounce fa-xl" style="color: #ffffff;"></i></a>
+                        <a href="https://github.com/dunzolo" class="m-3"><i class="fa-brands fa-github fa-bounce fa-xl" style="color: #ffffff;"></i></a></p>
                     </div>
                 </div>
-                <div class="col-3 d-flex justify-content-center">
-                    <div class="css-border user three">
-                    </div>
-                </div>
-                <div class="col-3 d-flex justify-content-center">
-                    <div class="css-border user four">
+                <div class="col-lg-3 col-md-6 col-sm-12  fst-italic text-center text-white ">
+                    <div class="css-border user four mb-5"></div>
+                    <h3>Francesco Vinario</h3>
+                    <div class="social text-center">
+                        <p class="text-break "><a href="https://www.linkedin.com/in/francesco-vinario-02063526a/"  class="m-3"><i class="fa-brands fa-linkedin fa-bounce fa-xl" style="color: #ffffff;"></i></a>
+                        <a href="https://github.com/Frah01" class="m-3"><i class="fa-brands fa-github fa-bounce fa-xl" style="color: #ffffff;"></i></a></p>
                     </div>
                 </div>
             </div>
         </div>
-        <div class="row fst-italic text-center mb-5 text-white">
-            <div class="col-3">
-                <h3>Giuseppe Maisto</h3>
-                <p class="text-break "><a href="https://www.linkedin.com/in/giuseppe-maisto-129299238/" class="m-3"><i class="fa-brands fa-linkedin fa-bounce fa-xl" style="color: #ffffff;"></i></a>
-                <a href="https://github.com/giuseppemaisto" class="m-3"><i class="fa-brands fa-github fa-bounce fa-xl" style="color: #ffffff;"></i></a></p>
-            </div>
-            <div class="col-3">
-                <h3>Alessia Menon</h3>
-                <p class="text-break "><a href="https://www.linkedin.com/in/alessia-menon/"  class="m-3"><i class="fa-brands fa-linkedin fa-bounce fa-xl" style="color: #ffffff;"></i></a>
-                <a href="https://github.com/alessiam1909" class="m-3"><i class="fa-brands fa-github fa-bounce fa-xl" style="color: #ffffff;"></i></a></p>
-            </div>
-            <div class="col-3">
-                <h3>Davide Rossi</h3>
-                <p class="text-break "><a href="https://www.linkedin.com/in/davide-rossi-95b478214/"  class="m-3"><i class="fa-brands fa-linkedin fa-bounce fa-xl" style="color: #ffffff;"></i></a>
-                <a href="https://github.com/dunzolo" class="m-3"><i class="fa-brands fa-github fa-bounce fa-xl" style="color: #ffffff;"></i></a></p>
-            </div>
-            <div class="col-3">
-                <h3>Francesco Vinario</h3>
-                <p class="text-break "><a href="https://www.linkedin.com/in/francesco-vinario-02063526a/"  class="m-3"><i class="fa-brands fa-linkedin fa-bounce fa-xl" style="color: #ffffff;"></i></a>
-                <a href="https://github.com/Frah01" class="m-3"><i class="fa-brands fa-github fa-bounce fa-xl" style="color: #ffffff;"></i></a></p>
-            </div>
-        </div>
+       
         <div class="row backg-footer">
             <div class=" col-8 d-flex mt-5 responsive " >
                 <div class="col-lg-3 me-2  col-responsive col-md-5">
@@ -167,7 +163,7 @@ export default {
         background-color: #00CDBE;
     }
     .user {
-  display: inline-block;
+  justify-content: center;
   width: 150px;
   height: 150px;
   border-radius: 50%;
@@ -182,6 +178,11 @@ export default {
     width: 200px;
     height: 200px;
   }
+}
+.team{
+    display: flex;
+    
+    text-align: center;
 }
 
 
@@ -207,6 +208,7 @@ export default {
   border-radius: 50%;
   width: 150px;
   height: 150px;
+  margin: 50px auto;
 
   &:hover{
     width: 200px;
@@ -257,6 +259,20 @@ export default {
   }
   .icons{
     margin: 0 0 10% 20%
+  }
+  .team{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    
+  }
+  .text-break{
+    display: flex;
+    
+  }
+  .social{
+    display: flex;
+    justify-content: center;
   }
     }
     @media screen and (max-width: 992px) and (min-width: 767px) {
