@@ -73,7 +73,7 @@ export default {
             </div>
             <div class="col-9">
                 <input class="search_bar" type="search" placeholder="Cerca il tuo ristorante preferito.." v-model="search_title" @keyup="getRestaurants">
-                <div class="col-12 d-flex flex-wrap justify-content-around">
+                <div class="col-12 d-flex flex-wrap justify-content-around lista-ristoranti">
                     <div class="responsive-card col-md-6 col-lg-5 col-xl-4 col-sm-12 col-xs-12" v-for="restaurant in filterRestaurants" :key= "restaurant.id" v-if="filterRestaurants.length > 0">
                         <CardRistoranti :restaurant="restaurant" :baseUrl="baseUrl"></CardRistoranti>
                     </div>
@@ -121,6 +121,12 @@ export default {
     height: 50px;
 
 
+}
+
+.lista-ristoranti{
+    height: 600px;
+    overflow-y:scroll;
+    margin: 30px 0;
 }
 
 .risposta{
