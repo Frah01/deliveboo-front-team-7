@@ -80,7 +80,7 @@ export default {
     <div class="contenitore-reviews">
         <div class="row-review">
             <h1>Noi ci mettiamo tutto il nostro impegno! Leggi cosa dicono di noi i nostri clienti!</h1>
-            <div class="col-12 col-sm-3 card-reviews" data-random="0" data-speed="4000" data-interval="151">
+            <div class="col-12 card-reviews" data-random="0" data-speed="4000" data-interval="151">
                 <div class="img-review" >
                     <img :src="reviews[this.activeItem].foto" alt="">
                 </div>
@@ -122,7 +122,6 @@ export default {
             }
 
             .card-reviews{
-                width: 40%;
                 margin: 0 auto;
                 border-radius: 10px;
                 text-align: center;
@@ -143,8 +142,9 @@ export default {
                 .descrizione{
                     color: rgba(0, 0, 0, 0.7);
                     font-size: 15px;
+                    width: 60%;
                     height: 100px;
-                    margin: 20px 0;
+                    margin: 20px auto;
                 }
                 .img-review{
                     width: 150px;
@@ -201,25 +201,30 @@ export default {
     }
     
     @media screen and (max-width: 766px) {
-        .card-reviews{
-            padding-bottom: 3rem;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            margin: 0 auto;
-            
-            .descrizione{
-                width: 300px;
+
+    .contenitore-reviews{
+
+        .row-review{
+            .card-reviews{
+                padding-bottom: 3rem;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                margin: 0 auto;
+                
+                .descrizione{
+                    width: 90%;
+                }
+                .circles-container{
+                padding-top: 5rem;
+                }
+                .img-review{
+                margin: 0 30px;
+                }
+                
             }
-          
-            .circles-container{
-            padding-top: 5rem;
         }
-        .img-review{
-            margin-right: 2rem;
-        }
-            
-        }
+    }
     }
 </style>
