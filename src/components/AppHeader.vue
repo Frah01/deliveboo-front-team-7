@@ -29,45 +29,6 @@ export default {
 </script>
 
 <template lang="">
-    <!-- <header>
-        <nav class="navbar navbar-expand-md navbar-expand-lg sticky-top p-2 shadow deliveboo-navbar d-flex justify-content-between">
-            <div class="col-3">
-                <div class="container-logo" >
-                    <router-link :to="{ name: 'homepage'}" >
-                        <img src="https://smallprintpizza.com.au/wp-content/uploads/deliveroo-logo.png" alt="logo deliveboo">
-                    </router-link>
-
-                </div>
-            </div>
-            <div class="">
-                <button class="navbar-toggler text-light" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon text-light"></span>
-                </button>
-                <div class="collapse navbar-collapse container-links" id="navbarNavDropdown">
-                    <ul class="navbar-nav">
-                        <li class="nav-item links"  v-for="(item,index) in menuItems" :key="index">
-                            <router-link :to="{ name: item.routeName}" class="nav-link login-button">
-                            {{ item.label }}
-                            </router-link>
-                        </li>
-                        <li class="nav-item dropdown d-flex">
-                            <a class="nav-link dropdown-toggle login-button" id="navbarDropdownMenuLink" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            Accedi
-                            </a>
-                            <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                                <a class="dropdown-item login-button" href="http://localhost:8000/login">Login</a>
-                                <a class="dropdown-item login-button" href="http://localhost:8000/register">Register</a>
-                            </div>
-                            <div class="container-cart">
-                                <img class="cart" src="https://cdn-icons-png.flaticon.com/128/4160/4160115.png" alt="">
-                                <div class="cart-badge">{{ cartItems() }}</div>
-                            </div>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </nav>
-    </header> -->
     <header>
         <nav class="navbar navbar-expand-lg sticky-top p-2 shadow deliveboo-navbar d-flex justify-content-between">
             <div class="container-fluid">
@@ -78,9 +39,6 @@ export default {
                     </router-link>
                 </div>
                 <div class="hamburger">
-                    <!-- <button class="navbar-toggler text-light" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                        <span class="navbar-toggler-icon text-light"></span>
-                    </button> -->
                     <div class=" container-links" id="navbarSupportedContent">
                         <ul class="navbar-nav container-lista d-flex align-items-center">
                             <li class="nav-item links"  v-for="(item,index) in menuItems" :key="index">
@@ -88,23 +46,26 @@ export default {
                                 {{ item.label }}
                                 </router-link>
                             </li>
-                            <li class="nav-item dropdown d-flex align-items-center">
+                            <li class="nav-item dropdown p-0 d-flex align-items-center">
                                 <a class="nav-link dropdown-toggle login-button accedi" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                                     Accedi
                                 </a>
                                 <a class="nav-link dropdown-toggle login-button menu" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"> Menù </a>
-                                <div class="container-cart">
+                                <button class="btn btn-link container-cart" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight">
                                     <img class="cart" src="https://cdn-icons-png.flaticon.com/128/4160/4160115.png" alt="">
                                     <div class="cart-badge">{{ store.qta_items }}</div>
-                                </div>
+                                </button>
+                                    
+                               
                                 <ul class="dropdown-menu dropdown-bg">
                                     <a class="dropdown-item login-button" href="http://localhost:8000/login">Login</a>
                                     <a class="dropdown-item login-button" href="http://localhost:8000/register">Register</a>
                                     <li class="nav-item links-dropdown"  v-for="(item,index) in menuItems" :key="index">
-                                        <router-link :to="{ name: item.routeName}" class=" login-button dropdown-item">
+                                        <router-link :to="{ name: item.routeName}" class=" login-button dropdown-item" >
                                             {{ item.label }}
                                         </router-link>
                                     </li>
+                                    
                                 </ul>
                             </li>
                         </ul>
@@ -114,6 +75,15 @@ export default {
             </div>
         </nav>
     </header>
+    <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel">
+                                        <div class="offcanvas-header">
+                                            <h5 class="offcanvas-title" id="offcanvasRightLabel">Offcanvas right</h5>
+                                            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+                                        </div>
+                                        <div class="offcanvas-body">
+                                            ...
+                                        </div>
+    </div>
        
 </template>
 
@@ -173,6 +143,8 @@ export default {
         .container-cart{
             width: 50px;
             height: 50px;
+            padding: 0;
+            margin: 0;
             position: relative;
             .cart{
                 width: 100%;
