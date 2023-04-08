@@ -18,7 +18,15 @@ export default {
         <div class="card card-restaurant">
                 <div class=" position-relative">
                     <div class="card-img-top h-200">
-                        <img :src="restaurant.immagine != null ? `${restaurant.immagine}`: 'https://artsmidnorthcoast.com/wp-content/uploads/2014/05/no-image-available-icon-6.png'" :alt="restaurant.nome">
+                        <div v-if="restaurant.immagine == null">
+                            <img :src="'https://artsmidnorthcoast.com/wp-content/uploads/2014/05/no-image-available-icon-6.png'" :alt="restaurant.nome">
+                        </div>
+                        <div v-else>
+                            <img :src="restaurant.immagine.includes('restaurant_images') ? 
+                            `${store.baseUrl}/storage/${restaurant.immagine}`:
+                            `${restaurant.immagine}`"
+                            :alt="restaurant.nome">
+                        </div>
                     </div>
                 </div>
                 <div class="card-body position-relative">
@@ -37,16 +45,16 @@ export default {
 </template>
 
 <style lang="scss" scoped>
-
-.card-restaurant{
+.card-restaurant {
     width: 400px;
     height: 385px;
     border-radius: 20px;
-    margin: 20px auto ;
+    margin: 20px auto;
     box-shadow: 2px 2px 10px 2px #D0EB99;
+
     .h-200 {
         height: 200px;
-    
+
         img {
             border-top-right-radius: 20px;
             border-top-left-radius: 20px;
@@ -54,6 +62,7 @@ export default {
             width: 100%;
             object-fit: cover;
         }
+
         .card-img-top {
             width: 100%;
             object-fit: cover;
@@ -61,34 +70,35 @@ export default {
         }
     }
 
-    .card-body{
+    .card-body {
         padding: 10px;
         height: calc(385px - 200px);
         border-bottom-left-radius: 20px;
         border-bottom-right-radius: 20px;
-        background:rgba(209, 235, 153, 0.25) ;
-        .title{
+        background: rgba(209, 235, 153, 0.25);
+
+        .title {
             margin-top: 12px;
             font-size: 18px;
         }
-    
-        .indirizzo{
+
+        .indirizzo {
             padding: 0;
             margin: 0;
             font-size: 12px;
             color: rgba(0, 0, 0, 0.75);
         }
-    
-        .numero{
+
+        .numero {
             padding: 0;
             margin: 0;
             font-size: 15px;
             color: rgba(24, 8, 97, 0.75);
         }
-        
+
         .badge {
             background-color: #00CDBE;
-            margin:5px;
+            margin: 5px;
             padding: 6px;
             border-radius: 10px;
         }
@@ -96,47 +106,50 @@ export default {
 
 }
 
-@media screen and (max-width:1700px){
-    .card-restaurant{
+@media screen and (max-width:1700px) {
+    .card-restaurant {
         width: 320px;
     }
 }
 
-@media screen and (max-width:1390px){
-    .card-restaurant{
+@media screen and (max-width:1390px) {
+    .card-restaurant {
         width: 280px;
     }
 }
 
-@media screen and (max-width:1200px){
-    .card-restaurant{
+@media screen and (max-width:1200px) {
+    .card-restaurant {
         width: 320px;
     }
 }
 
-@media screen and (max-width:952px){
-    .card-restaurant{
+@media screen and (max-width:952px) {
+    .card-restaurant {
         width: 250px;
     }
 }
 
-@media screen and (max-width:767px){
-    .card-restaurant{
+@media screen and (max-width:767px) {
+    .card-restaurant {
         width: 470px;
     }
 }
-@media screen and (max-width:692px){
-    .card-restaurant{
+
+@media screen and (max-width:692px) {
+    .card-restaurant {
         width: 350px;
     }
 }
-@media screen and (max-width:530px){
-    .card-restaurant{
+
+@media screen and (max-width:530px) {
+    .card-restaurant {
         width: 250px;
     }
 }
-@media screen and (max-width:400px){
-    .card-restaurant{
+
+@media screen and (max-width:400px) {
+    .card-restaurant {
         width: 200px;
     }
 }
