@@ -49,14 +49,13 @@
     }
 </script>
 <template lang="">
-    <div class="container-fluid ">
+    <div class="container-fluid container-chisiamo">
         <div class="row ">
-            <div class="col-12 jumbotron-deliveroo" >
                 <div class="offset-3 col-6 mt-3">
                     <router-link :to="{ name : 'homepage'}" class="btn btn-sm indietro text-white fw-semibold" ><i class="fa-solid fa-arrow-left me-2"></i>Torna alla Homepage</router-link>
                 </div>
-                <div class="offset-3 col-6">
-                    <div class="card  p-3 my-5" >
+                <div class="offset-3 col-6 ">
+                    <div class="card  p-3 my-5 background-form text-light" >
                 <h2 class="text-center">Informazioni di contatto</h2>
                 <div class="row">
                     <div class="col-12 col-md-6">
@@ -85,7 +84,7 @@
                     <div class="col-12 mt-4">
                         <h2>Contattaci</h2>
                         <form @submit.prevent="sendForm">
-                            <div class="row">
+                            <div class="row text-light">
                                 <div class="col-12 col-md-6 my-2">
                                     <label for="nome" class="control-label fw-semibold mb-3">Nome</label>
                                     <input type="text" class="form-control" name="nome" id="nome"
@@ -131,8 +130,8 @@
                                         {{error}}
                                     </div>
                                 </div>
-                                <div class="col-12 my-2">
-                                    <button type="submit" class="btn btn-sm indietro text-white fw-semibold" :disabled="loading">{{loading ? 'Invio richiesta..' : 'Invia' }}</button>
+                                <div class="col-12 my-2 text-center">
+                                    <button type="submit" class="btn btn-sm indietro text-white fw-semibold button-login" :disabled="loading">{{loading ? 'Invio richiesta..' : 'Invia' }}</button>
                                 </div>
                                 <div class="col-12 my-5" v-if="success">
                                     <p class="fw-semibold">Richiesta inviata correttamente</p>
@@ -142,22 +141,24 @@
                     </div>
                 </div>
             </div>
-            </div>
            
             </div>
     </div>
         </div>
 </template>
 <style lang="scss" scoped>
-.jumbotron-deliveroo {
-    width: 100vw;
-    height: 90vh;
-    background-image: url('https://images8.alphacoders.com/942/thumb-1920-942495.jpg');
-    background-position: center;
-    background-size: cover;
-}
-.background-form{
-    background-color: #00CDBE;
+.container-chisiamo{
+    background-image: url('/public/Video senza titolo - Realizzato con Clipchamp (1).gif');
+    .background-form{
+        background-color: rgba(0, 205, 190, 0.85);
+
+        .button-login {
+                background-color: rgb(68, 0, 99);
+                color: white;
+                padding: 10px;
+                border-radius: 15px;
+            }
+    }
 }
 
 </style>
