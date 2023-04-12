@@ -7,10 +7,9 @@ export default {
          <div class="container-chisiamo">
             <div class="row row-chisiamo" >
                 <div class="col-12 mt-5 text-center">
-                    <lord-icon
+                    <lord-icon class="bike"
                         src="https://cdn.lordicon.com/nnqjjehw.json"
-                        trigger="loop"
-                        style="width:250px;height:250px">
+                        trigger="loop">
                     </lord-icon>
                     <h2 >Diventa un rider anche tu!</h2>
                     <p>La nostra proposta ai rider si basa su ciò che conta di più per loro. Come facciamo a sapere di cosa si tratta? Chiediamo e ascoltiamo sempre la loro opinione. In questo modo, abbiamo potuto sviluppare un’offerta che mette in primo piano ciò di cui hanno bisogno: orari flessibili, guadagni buoni e sicurezza. Deliveroo è stata fra le prime piattaforme di consegne a domicilio al mondo a offrire l’assicurazione contro gli infortuni personali (oggi in Italia è fornita da INAIL) e un’assicurazione ulteriore per eventuali danni a cose o a terzi. La copertura è offerta a titolo gratuito e protegge i rider fin dalla loro prima consegna con Deliveroo. Will, fondatore e CEO di Deliveroo, è stato il nostro primo rider e ha effettuato consegne a tempo pieno durante il primo anno di attività dell’azienda. Insieme ad altri membri del nostro team, ad oggi consegna ancora a domicilio a cadenza regolare.</p>
@@ -88,10 +87,15 @@ export default {
        
 
         .row-chisiamo{
-            width: 60%;
+            width: 80%;
             margin: 0 auto;
             padding: 30px ;
 
+            .bike{
+                width: 200px;
+                height: 200px;
+            }
+            
             h2{
                 color: rgb(0, 205, 190);
                 font-weight: 600;
@@ -119,13 +123,15 @@ export default {
         .row-cards{
             width: 80%;
             margin: 0 auto;
-            padding: 50px ;
+            padding: 50px 0;
 
             .cards{
                 background-color: rgb(254, 253, 255);
                 height: 400px;
                 border-radius: 20px;
-                margin:20px;
+                margin-top: 20px;
+                margin-bottom: 20px;
+                margin-right: 10px;
                 padding: 10px;
                 border: 2px solid rgb(0, 205, 190) ;
                 box-shadow: 1px 1px 15px 1px rgb(0, 205, 190);

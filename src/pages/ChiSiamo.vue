@@ -30,7 +30,7 @@ export default {
        
 
         .row-chisiamo{
-            width: 60%;
+            width: 80%;
             margin: 0 auto;
             padding: 50px ;
 
